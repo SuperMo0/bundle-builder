@@ -1,0 +1,28 @@
+.VariantPicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.VariantPicker-option {
+  all: unset;
+  display: flex;
+  padding: var(--space-1);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xxs);
+  cursor: pointer;
+  font-size: var(--font-size-xs);
+  align-items: center;
+}
+
+.VariantPicker-option[data-selected] {
+  border-color: var(--color-info);
+}
+
+.VariantPicker-swatch {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  display: block;
+}
