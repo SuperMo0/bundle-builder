@@ -16,7 +16,7 @@ export default function ProductGrid({ items, quantities, onQuantityChange }: Pro
                     key={item.id}
                     bundleItem={item}
                     quantity={quantities[item.id] ?? 0}
-                    onQuantityChange={(qty) => onQuantityChange(item.id, qty)}
+                    onQuantityChange={onQuantityChange}
                 />
             ))}
         </div>
