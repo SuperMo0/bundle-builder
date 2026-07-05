@@ -23,12 +23,12 @@ export function StepAccordionItem({
     children,
 }: StepAccordionItemProps) {
     return (
-        <Accordion.Item className="AccordionItem container" value={value}>
+        <Accordion.Item className="AccordionItem" value={value}>
+            <span className="StepAccordion-eyebrow">
+                STEP {stepNumber} OF {totalSteps}
+            </span>
             <Accordion.Header className="AccordionHeader">
                 <Accordion.Trigger className="AccordionTrigger StepAccordion-trigger">
-                    <span className="StepAccordion-eyebrow">
-                        STEP {stepNumber} OF {totalSteps}
-                    </span>
                     <span className="StepAccordion-row">
                         <img src={icon} className="StepAccordion-icon" alt='icon'></img>
                         <span className="StepAccordion-title">{title}</span>
