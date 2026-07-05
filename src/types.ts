@@ -14,5 +14,6 @@ export interface BundleItem {
     originalPrice?: number
     billingPeriod?: BillingPeriod
     required?: boolean
+    defaultQuantity?: number
     colors?: ColorVariant[]
 }

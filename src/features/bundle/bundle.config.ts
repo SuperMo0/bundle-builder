@@ -24,6 +24,7 @@ export const bundleSteps: BundleStep[] = [
                 image: '/products/wyze-cam-v4.png',
                 price: 27.98,
                 originalPrice: 35.98,
+                defaultQuantity: 1,
                 colors: [
                     { name: 'White', image: '/products/wyze-cam-v4-white.png' },
                     { name: 'Grey', image: '/products/wyze-cam-v4-grey.png' },
@@ -37,6 +38,7 @@ export const bundleSteps: BundleStep[] = [
                 image: '/products/wyze-cam-pan-v3.png',
                 price: 34.98,
                 originalPrice: 39.98,
+                defaultQuantity: 2,
                 colors: [
                     { name: 'White', image: '/products/wyze-cam-pan-v3-white.png' },
                     { name: 'Black', image: '/products/wyze-cam-pan-v3-black.png' },

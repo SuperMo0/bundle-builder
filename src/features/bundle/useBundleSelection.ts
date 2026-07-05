@@ -8,7 +8,7 @@ function createInitialSelections(steps: BundleStep[]): Record<string, Record<str
         steps.map((step) => [
             step.id,
             Object.fromEntries(
-                step.items.map((item) => [item.id, item.required ? 1 : 0])
+                step.items.map((item) => [item.id, item.defaultQuantity ?? (item.required ? 1 : 0)])
             ),
         ])
     )
