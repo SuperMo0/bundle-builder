@@ -9,7 +9,13 @@ export default function BundleAccordion() {
     return (
         <StepAccordion>
             {bundleSteps.map((step, index) => (
-                <StepAccordionItem key={step.id} value={step.id} stepNumber={index + 1} totalSteps={bundleSteps.length} icon={step.icon} title={step.title} selectedLabel="2 selected">
+                <StepAccordionItem key={step.id}
+                    value={step.id}
+                    stepNumber={index + 1}
+                    totalSteps={bundleSteps.length}
+                    icon={step.icon}
+                    title={step.title}
+                    selectedLabel={`${getSelectedCount(step.id)} selected`}>
                     <ProductGrid
                         key={step.id}
                         items={step.items}

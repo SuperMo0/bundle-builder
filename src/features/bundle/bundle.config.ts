@@ -20,39 +20,58 @@ export const bundleSteps: BundleStep[] = [
             {
                 id: 'wyze-cam-v4',
                 name: 'Wyze Cam v4',
+                description: 'The clearest Wyze Cam ever made.',
                 image: '/products/wyze-cam-v4.png',
                 price: 27.98,
                 originalPrice: 35.98,
-                colors: ['White', 'Grey', 'Black'],
+                colors: [
+                    { name: 'White', image: '/products/wyze-cam-v4-white.png' },
+                    { name: 'Grey', image: '/products/wyze-cam-v4-grey.png' },
+                    { name: 'Black', image: '/products/wyze-cam-v4-black.png' },
+                ],
             },
             {
                 id: 'wyze-cam-pan-v3',
                 name: 'Wyze Cam Pan v3',
+                description: '360° pan and 180° tilt security camera.',
                 image: '/products/wyze-cam-pan-v3.png',
                 price: 34.98,
                 originalPrice: 39.98,
-                colors: ['White', 'Black'],
+                colors: [
+                    { name: 'White', image: '/products/wyze-cam-pan-v3-white.png' },
+                    { name: 'Black', image: '/products/wyze-cam-pan-v3-black.png' },
+                ],
             },
             {
                 id: 'wyze-cam-floodlight-v2',
                 name: 'Wyze Cam Floodlight v2',
+                description: '2K floodlight camera with a 160° wide-angle view for your garage.',
                 image: '/products/wyze-cam-floodlight-v2.png',
                 price: 69.98,
                 originalPrice: 89.98,
-                colors: ['White', 'Black'],
+                // No per-color assets exist yet for this product — falls back to the base image for both.
+                colors: [
+                    { name: 'White', image: '/products/wyze-cam-floodlight-v2.png' },
+                    { name: 'Black', image: '/products/wyze-cam-floodlight-v2.png' },
+                ],
             },
             {
                 id: 'wyze-duo-cam-doorbell',
                 name: 'Wyze Duo Cam Doorbell',
+                description: 'Two cameras. Two views. Double the porch protection.',
                 image: '/products/wyze-duo-cam-doorbell.png',
                 price: 69.98,
             },
             {
                 id: 'wyze-battery-cam-pro',
                 name: 'Wyze Battery Cam Pro',
+                description: 'Protect anywhere. See everything in 2.5K HDR. No power outlet or electrician needed.',
                 image: '/products/wyze-battery-cam-pro.png',
                 price: 89.98,
-                colors: ['White', 'Black'],
+                colors: [
+                    { name: 'White', image: '/products/wyze-battery-cam-pro-white.png' },
+                    { name: 'Black', image: '/products/wyze-battery-cam-pro-black.png' },
+                ],
             },
         ],
     },
@@ -67,6 +86,7 @@ export const bundleSteps: BundleStep[] = [
             {
                 id: 'cam-basic',
                 name: 'Cam Basic',
+                description: 'Basic cloud alerts and event history for a single camera.',
                 image: '/plans/cam-basic.png',
                 price: 0,
                 billingPeriod: 'month',
@@ -74,6 +94,7 @@ export const bundleSteps: BundleStep[] = [
             {
                 id: 'cam-unlimited',
                 name: 'Cam Unlimited',
+                description: 'Unlimited cloud storage and smart alerts for every camera in your system.',
                 image: '/plans/cam-unlimited.png',
                 price: 9.99,
                 originalPrice: 12.99,
@@ -90,12 +111,14 @@ export const bundleSteps: BundleStep[] = [
             {
                 id: 'wyze-sense-motion-sensor',
                 name: 'Wyze Sense Motion Sensor',
+                description: 'Detects motion up to 30 feet away and alerts you instantly.',
                 image: '/products/wyze-sense-motion-sensor.png',
                 price: 29.99,
             },
             {
                 id: 'wyze-sense-hub',
                 name: 'Wyze Sense Hub (Required)',
+                description: 'Connects your sensors to Wi-Fi so they can talk to the app.',
                 image: '/products/wyze-sense-hub.png',
                 price: 0,
                 originalPrice: 29.92,
@@ -114,6 +137,7 @@ export const bundleSteps: BundleStep[] = [
             {
                 id: 'wyze-microsd-256gb',
                 name: 'Wyze MicroSD Card (256GB)',
+                description: 'Local backup storage for continuous recording, no subscription required.',
                 image: '/products/wyze-microsd-256gb.png',
                 price: 20.98,
             },
