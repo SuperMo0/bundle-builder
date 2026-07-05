@@ -1,0 +1,91 @@
+.ProductCard {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+}
+
+.ProductCard-media {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-1);
+  align-self: start;
+}
+
+.ProductCard-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ProductCard-badge {
+  padding-inline: var(--space-2);
+  padding-block: var(--space-1);
+  border-radius: var(--radius-full);
+  background: var(--color-primary);
+  color: var(--color-button-foreground);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.ProductCard-image {
+  display: block;
+  width: 6.5rem;
+  height: 6.5rem;
+  object-fit: contain;
+}
+
+
+.ProductCard-name {
+  margin: 0;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.ProductCard-description {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.ProductCard-learn-more {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.ProductCard-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ProductCard-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.ProductCard-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-1);
+}
+
+.ProductCard-price-original {
+  font-size: var(--font-size-xs);
+  color: var(--color-price-original);
+  text-decoration: line-through;
+}
+
+.ProductCard-price-current {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-price-discounted);
+}
