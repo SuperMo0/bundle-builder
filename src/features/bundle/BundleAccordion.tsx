@@ -1,11 +1,15 @@
 import { bundleSteps } from './bundle.config'
 import { StepAccordion, StepAccordionItem } from '../../components/StepAccordion'
-import { useBundleSelection } from './useBundleSelection'
 import ProductGrid from '../../components/ProductGrid';
 
-export default function BundleAccordion() {
 
-    const { selections, getSelectedCount, setQuantity } = useBundleSelection(bundleSteps);
+interface BundleAccordion {
+    selections: Record<string, Record<string, number>>;
+    setQuantity: (stepId: string, itemId: string, qty: number) => void;
+    getSelectedCount: (stepId: string) => number;
+}
+export default function BundleAccordion({ selections, setQuantity, getSelectedCount }: BundleAccordion) {
+
     return (
         <StepAccordion>
             {bundleSteps.map((step, index) => (

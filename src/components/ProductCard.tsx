@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { BundleItem } from '../../types'
+import type { BundleItem } from '../types'
 import Stepper from './Stepper'
 import VariantPicker from './VariantPicker'
 import './ProductCard.css'
