@@ -1,10 +1,13 @@
 .PageHeader {
-  padding-block: var(--space-8) var(--space-6);
+  padding-block: var(--space-7) var(--space-6);
 }
 
 .PageHeader-title {
   font-size: var(--font-size-3xl);
   text-align: center;
+  font-weight: 700;
+  letter-spacing: -0.06px;
+  line-height: 110.00000000000001%;
 }
 
 .PageSteps {
@@ -17,8 +20,8 @@
 }
 
 .PageReview-inner {
-  padding-block: var(--space-8);
+  padding-block: var(--space-2);
   display: flex;
   flex-direction: column;
-  gap: var(--space-6);
+  gap: var(--space-5);
 }

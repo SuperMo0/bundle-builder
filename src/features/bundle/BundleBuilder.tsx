@@ -18,8 +18,9 @@ export default function BundleBuilder() {
             </section>
 
             <section className="PageReview">
-                <div className="PageReview-inner container">
-                    <ReviewPanel selections={selections} />
+                <div className="PageReview-inner">
+                    <span className="ReviewPanel-eyebrow">Review</span>
+                    <ReviewPanel selections={selections} setQuantity={setQuantity} />
                 </div>
             </section>
         </>
