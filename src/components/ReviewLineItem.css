@@ -1,0 +1,32 @@
+.ReviewLineItem {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ReviewLineItem-image {
+  width: 2.5rem;
+  height: 2.5rem;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.ReviewLineItem-name {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-title-review);
+}
+
+
+.ReviewLineItem-price-original {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-price-strikethrough);
+  text-decoration: line-through;
+}
+
+.ReviewLineItem-price-current {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-interactive);
+}

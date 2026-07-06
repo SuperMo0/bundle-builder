@@ -5,7 +5,7 @@
 .AccordionHeader {
   display: flex;
   padding: var(--space-5) var(--space-4);
-  border-block: 0.5px solid var(--color-text-strong);
+  border-block: 0.5px solid var(--color-text-title);
 }
 
 .AccordionTrigger {
@@ -16,7 +16,7 @@
 }
 
 .AccordionTrigger:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-text-interactive);
   outline-offset: 2px;
 }
 
@@ -56,9 +56,9 @@
 .StepAccordion-eyebrow {
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
-  letter-spacing: 0.06em;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
-  color: var(--color-text-subtle);
+  color: var(--color-text-eyebrow);
   padding-inline: var(--space-4);
 }
 
@@ -71,7 +71,7 @@
 .StepAccordion-icon {
   display: inline-flex;
   flex-shrink: 0;
-  color: var(--color-text);
+  color: var(--color-text-title);
 }
 
 .StepAccordion-icon {
@@ -83,7 +83,7 @@
 .StepAccordion-title {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-text);
+  color: var(--color-text-title);
 }
 
 .StepAccordion-meta {
@@ -93,7 +93,7 @@
   gap: var(--space-1);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
-  color: var(--color-primary);
+  color: var(--color-text-interactive);
 }
 
 .AccordionContent{
