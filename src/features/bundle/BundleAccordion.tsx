@@ -1,7 +1,7 @@
 import { bundleSteps } from './bundle.config'
-import { StepAccordion, StepAccordionItem } from '../../ui/components/StepAccordion'
+import { StepAccordion, StepAccordionItem } from '../../components/StepAccordion'
 import { useBundleSelection } from './useBundleSelection'
-import ProductGrid from '../../ui/components/ProductGrid';
+import ProductGrid from '../../components/ProductGrid';
 
 export default function BundleAccordion() {
 

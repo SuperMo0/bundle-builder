@@ -1,0 +1,24 @@
+.PageHeader {
+  padding-block: var(--space-8) var(--space-6);
+}
+
+.PageHeader-title {
+  font-size: var(--font-size-3xl);
+  text-align: center;
+}
+
+.PageSteps {
+  display: flex;
+  flex-direction: column;
+}
+
+.PageReview {
+  background: var(--color-surface-elevated);
+}
+
+.PageReview-inner {
+  padding-block: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}

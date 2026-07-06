@@ -1,4 +1,4 @@
-import type { BundleItem } from '../../types'
+import type { BundleItem } from '../types'
 import ProductCard from './ProductCard'
 import './ProductGrid.css'
 
