@@ -7,6 +7,7 @@ export interface BundleStep {
     title: string
     icon: string
     selectionMode: StepSelectionMode
+    reviewLabel?: string
     items: BundleItem[]
 }
 
@@ -16,6 +17,7 @@ export const bundleSteps: BundleStep[] = [
         title: 'Choose your cameras',
         icon: '/livestream.svg',
         selectionMode: 'quantity',
+        reviewLabel: 'Cameras',
         items: [
             {
                 id: 'wyze-cam-v4',
@@ -82,8 +84,7 @@ export const bundleSteps: BundleStep[] = [
         title: 'Choose your plan',
         icon: '/plan.svg',
         selectionMode: 'single',
-        // PLACEHOLDER — only "Cam Unlimited" is confirmed from the review panel.
-        // Replace with the real tier list once the expanded "Choose your plan" step is available.
+        reviewLabel: "HOME MONITORING PLANE",
         items: [
             {
                 id: 'cam-basic',
@@ -101,6 +102,7 @@ export const bundleSteps: BundleStep[] = [
                 price: 9.99,
                 originalPrice: 12.99,
                 billingPeriod: 'month',
+                defaultQuantity: 1,
             },
         ],
     },
@@ -109,6 +111,7 @@ export const bundleSteps: BundleStep[] = [
         title: 'Choose your sensors',
         icon: '/sensors.svg',
         selectionMode: 'quantity',
+        reviewLabel: 'Sensors',
         items: [
             {
                 id: 'wyze-sense-motion-sensor',
@@ -133,8 +136,7 @@ export const bundleSteps: BundleStep[] = [
         title: 'Add extra protection',
         icon: '/extra.svg',
         selectionMode: 'quantity',
-        // PLACEHOLDER — only the MicroSD card is confirmed from the review panel.
-        // Replace with the real accessories catalog once the expanded step is available.
+        reviewLabel: 'Accessories',
         items: [
             {
                 id: 'wyze-microsd-256gb',

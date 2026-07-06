@@ -13,14 +13,14 @@
   height: 1.75rem;
   border-radius: var(--radius-sm);
   background: var(--color-surface-muted);
-  color: var(--color-text);
+  color: var(--color-icon-stepper);
   font-size: var(--font-size-md);
   line-height: 1;
   cursor: pointer;
 }
 
 .Stepper-button:focus-visible {
-  outline: 2px solid var(--color-primary);
+  outline: 2px solid var(--color-text-interactive);
   outline-offset: 2px;
 }
 
@@ -34,5 +34,5 @@
   text-align: center;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
-  color: var(--color-text);
+  color: var(--color-text-title);
 }
