@@ -1,0 +1,118 @@
+.ReviewSummary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.ReviewSummary-shipping {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.ReviewSummary-shipping-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.ReviewSummary-shipping-label {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-title);
+}
+
+
+.ReviewSummary-shipping-price-original {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-price-strikethrough);
+  text-decoration: line-through;
+}
+
+.ReviewSummary-shipping-price-current {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-interactive);
+}
+
+.ReviewSummary-total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.ReviewSummary-badge {
+  width: 4.88rem;
+  height: 4.88rem;
+  object-fit: contain;
+}
+
+.ReviewSummary-total-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
+.ReviewSummary-financing {
+  padding-block: calc(var(--space-1) + 1px);
+  padding-inline: var(--space-2);
+  border-radius: 3px;
+  background: var(--color-bg-primary);
+  color: var(--color-button-foreground);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.ReviewSummary-total-price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+
+.ReviewSummary-total-price-original {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-price-strikethrough);
+  text-decoration: line-through;
+}
+
+.ReviewSummary-total-price-current {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-interactive);
+}
+
+.ReviewSummary-savings {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-success);
+}
+
+.ReviewSummary-checkout {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  padding-block: var(--space-4);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-primary);
+  color: var(--color-button-foreground);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+  cursor: pointer;
+}
+
+.ReviewSummary-checkout:focus-visible {
+  outline: 2px solid var(--color-text-interactive);
+  outline-offset: 2px;
+}
+
+.ReviewSummary-save-for-later {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-eyebrow);
+  text-decoration: underline;
+  font-style: italic;
+}
