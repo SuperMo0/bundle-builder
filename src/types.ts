@@ -1,7 +1,5 @@
 export type BillingPeriod = 'once' | 'month'
 
-export type SelectionMode = 'quantity' | 'single'
-
 export const DEFAULT_VARIANT_KEY = 'default'
 
 export interface ColorVariant {
