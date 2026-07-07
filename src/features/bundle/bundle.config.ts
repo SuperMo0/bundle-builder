@@ -1,6 +1,7 @@
 import type { BundleItem, BillingPeriod, ColorVariant } from "../../types"
 
-export type BundleSelections = Record<string, Record<string, number>>
+/** stepId -> itemId -> variantKey (color name, or DEFAULT_VARIANT_KEY) -> quantity */
+export type BundleSelections = Record<string, Record<string, Record<string, number>>>
 
 export interface QuantityItem extends BundleItem {
     required?: boolean

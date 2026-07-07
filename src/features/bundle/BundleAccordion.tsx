@@ -7,7 +7,7 @@ import type { BundleSelections } from './bundle.config'
 
 interface BundleAccordionProps {
     selections: BundleSelections;
-    setQuantity: (stepId: string, itemId: string, qty: number) => void;
+    setQuantity: (stepId: string, itemId: string, variantKey: string, qty: number) => void;
     getSelectedCount: (stepId: string) => number;
 }
 export default function BundleAccordion({ selections, setQuantity, getSelectedCount }: BundleAccordionProps) {
@@ -33,7 +33,7 @@ export default function BundleAccordion({ selections, setQuantity, getSelectedCo
                             key={step.id}
                             items={step.items}
                             quantities={selections[step.id]}
-                            onQuantityChange={(itemId, quantity) => { setQuantity(step.id, itemId, quantity) }}
+                            onQuantityChange={(itemId, variantKey, quantity) => { setQuantity(step.id, itemId, variantKey, quantity) }}
                             selectionMode={step.selectionMode}
                         />
                     </StepAccordionItem>

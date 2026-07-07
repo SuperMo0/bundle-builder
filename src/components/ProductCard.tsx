@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { ComponentProps } from 'react'
 import type { BundleItem, ColorVariant, SelectionMode } from '../types'
+import { DEFAULT_VARIANT_KEY } from '../types'
 import Stepper from './Stepper'
 import VariantPicker from './VariantPicker'
 import PriceDisplay from './PriceDisplay'
@@ -13,15 +14,15 @@ export interface ProductCardItem extends BundleItem {
 
 interface ProductCardProps extends ComponentProps<'div'> {
     bundleItem: ProductCardItem
-    quantity: number
-    onQuantityChange: (itemId: string, quantity: number) => void
+    quantities: Record<string, number>
+    onQuantityChange: (itemId: string, variantKey: string, quantity: number) => void
 
     selectionMode: SelectionMode
 }
 
 export default function ProductCard({
     bundleItem,
-    quantity,
+    quantities,
     onQuantityChange,
     selectionMode,
     ref,
@@ -29,6 +30,10 @@ export default function ProductCard({
 }: ProductCardProps) {
     const { id, name, description, image, price, originalPrice, colors, required } = bundleItem
     const [selectedColor, setSelectedColor] = useState(colors?.[0]?.name)
+
+    const variantKey = selectedColor ?? DEFAULT_VARIANT_KEY
+    const quantity = quantities[variantKey] ?? 0
+    const isSelected = Object.values(quantities).some((qty) => qty > 0)
 
     const hasDiscount = originalPrice !== undefined && originalPrice > price
     const savingsPercent = hasDiscount
@@ -40,7 +45,7 @@ export default function ProductCard({
             {...radioProps}
             ref={ref}
             className="ProductCard"
-            data-selected={quantity > 0 || undefined}
+            data-selected={isSelected || undefined}
         >
             <div className="ProductCard-media">
                 {savingsPercent !== null && (
@@ -66,7 +71,7 @@ export default function ProductCard({
                         {selectionMode === 'quantity' && (
                             <Stepper
                                 quantity={quantity}
-                                onChange={(qty) => onQuantityChange(id, qty)}
+                                onChange={(qty) => onQuantityChange(id, variantKey, qty)}
                                 min={required ? 1 : 0}
                             />
                         )}

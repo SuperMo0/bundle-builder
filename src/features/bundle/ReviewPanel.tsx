@@ -8,7 +8,7 @@ import './ReviewPanel.css'
 
 interface ReviewPanelProps {
     selections: BundleSelections
-    setQuantity: (stepId: string, itemId: string, qty: number) => void
+    setQuantity: (stepId: string, itemId: string, variantKey: string, qty: number) => void
 }
 
 export default function ReviewPanel({ selections, setQuantity }: ReviewPanelProps) {
@@ -39,7 +39,9 @@ export default function ReviewPanel({ selections, setQuantity }: ReviewPanelProp
                                         quantity={lineItem.quantity}
                                         price={lineItem.price}
                                         originalPrice={lineItem.originalPrice}
-                                        onQuantityChange={(qty) => setQuantity(section.id, lineItem.id, qty)}
+                                        onQuantityChange={(qty) =>
+                                            setQuantity(section.id, lineItem.itemId, lineItem.variantKey, qty)
+                                        }
                                     />
                                 ))}
                             </div>
