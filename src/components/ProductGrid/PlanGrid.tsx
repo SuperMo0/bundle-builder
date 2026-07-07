@@ -1,7 +1,7 @@
 import { RadioGroup } from 'radix-ui'
-import type { PlanItem } from '../types'
-import { DEFAULT_VARIANT_KEY } from '../types'
-import PlanCard from './PlanCard'
+import type { PlanItem } from '../../types'
+import { DEFAULT_VARIANT_KEY } from '../../types'
+import PlanCard from '../Card/PlanCard'
 import './ProductGrid.css'
 
 interface PlanGridProps {

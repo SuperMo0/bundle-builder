@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import type { QuantityItem } from '../types'
-import { DEFAULT_VARIANT_KEY } from '../types'
-import Stepper from './Stepper'
-import VariantPicker from './VariantPicker'
-import PriceDisplay from './PriceDisplay'
+import type { QuantityItem } from '../../types'
+import { DEFAULT_VARIANT_KEY } from '../../types'
+import Stepper from '../Stepper/Stepper'
+import VariantPicker from '../VariantPicker/VariantPicker'
+import PriceDisplay from '../PriceDisplay/PriceDisplay'
 import './Card.css'
 
 
@@ -33,7 +33,7 @@ export default function ProductCard({ bundleItem, quantities, onQuantityChange, 
                 {savingsPercent !== null && (
                     <span className="ProductCard-badge">Save {savingsPercent}%</span>
                 )}
-                <img src={image || "/wyze-icon.svg"} alt={name} className="ProductCard-image" />
+                <img src={image || "/icons/product-placeholder.svg"} alt={name} className="ProductCard-image" />
             </div>
 
             <div className="ProductCard-content">

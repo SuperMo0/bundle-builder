@@ -1,5 +1,5 @@
-import type { QuantityItem } from '../types'
-import ProductCard from './ProductCard'
+import type { QuantityItem } from '../../types'
+import ProductCard from '../Card/ProductCard'
 import './ProductGrid.css'
 
 interface ProductGridProps {

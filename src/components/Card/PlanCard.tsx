@@ -1,6 +1,6 @@
 import type { ComponentProps } from 'react'
-import type { PlanItem } from '../types'
-import PriceDisplay from './PriceDisplay'
+import type { PlanItem } from '../../types'
+import PriceDisplay from '../PriceDisplay/PriceDisplay'
 import './Card.css'
 
 interface PlanCardProps extends ComponentProps<'div'> {
@@ -21,7 +21,7 @@ export default function PlanCard({ bundleItem, ref, ...radioProps }: PlanCardPro
                 {savingsPercent !== null && (
                     <span className="ProductCard-badge">Save {savingsPercent}%</span>
                 )}
-                <img src={image || "/wyze-icon.svg"} alt={name} className="ProductCard-image" />
+                <img src={image || "/icons/product-placeholder.svg"} alt={name} className="ProductCard-image" />
             </div>
 
             <div className="ProductCard-content">

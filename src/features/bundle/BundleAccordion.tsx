@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useBundleSteps } from './useBundleSteps'
-import { StepAccordion, StepAccordionItem } from '../../components/StepAccordion'
-import ProductGrid from '../../components/ProductGrid'
-import PlanGrid from '../../components/PlanGrid'
+import { StepAccordion, StepAccordionItem } from '../../components/StepAccordion/StepAccordion'
+import ProductGrid from '../../components/ProductGrid/ProductGrid'
+import PlanGrid from '../../components/ProductGrid/PlanGrid'
 import type { BundleSelections } from './bundle.config'
 
 

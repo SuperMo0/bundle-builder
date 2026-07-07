@@ -1,5 +1,5 @@
-import Stepper from './Stepper'
-import PriceDisplay from './PriceDisplay'
+import Stepper from '../Stepper/Stepper'
+import PriceDisplay from '../PriceDisplay/PriceDisplay'
 import './ReviewLineItem.css'
 
 interface ReviewLineItemProps {
@@ -23,7 +23,7 @@ export default function ReviewLineItem({
 }: ReviewLineItemProps) {
     return (
         <div className="ReviewLineItem">
-            <img src={image || "/wyze-icon.svg"} alt={name} className="ReviewLineItem-image" />
+            <img src={image || "/icons/product-placeholder.svg"} alt={name} className="ReviewLineItem-image" />
             <p className="ReviewLineItem-name">{name}</p>
             <Stepper quantity={quantity} onChange={onQuantityChange} min={min} />
             <PriceDisplay price={price} originalPrice={originalPrice} variant="line" />

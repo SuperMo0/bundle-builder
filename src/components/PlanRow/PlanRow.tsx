@@ -1,6 +1,6 @@
 import './PlanRow.css'
-import PlanImage from './PlanImage'
-import PriceDisplay from './PriceDisplay'
+import PlanImage from '../PlanImage/PlanImage'
+import PriceDisplay from '../PriceDisplay/PriceDisplay'
 
 interface PlanRowProps {
     planTier?: string

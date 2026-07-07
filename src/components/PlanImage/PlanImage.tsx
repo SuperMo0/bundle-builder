@@ -7,7 +7,7 @@ interface PlanImageProps {
 export default function PlanImage({ variantLabel }: PlanImageProps) {
     return (
         <div className="PlanImage">
-            <img src={"/wyze-icon.svg"} alt="" className="PlanRow-icon" />
+            <img src={"/icons/product-placeholder.svg"} alt="" className="PlanRow-icon" />
             <p className="PlanRow-name">
                 Cam <span className="PlanRow-variant">{variantLabel}</span>
             </p>

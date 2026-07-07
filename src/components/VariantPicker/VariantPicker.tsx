@@ -1,5 +1,5 @@
 import { RadioGroup } from 'radix-ui'
-import type { ColorVariant } from '../types'
+import type { ColorVariant } from '../../types'
 import './VariantPicker.css'
 
 interface VariantPickerProps {

@@ -2,7 +2,7 @@
     {
         "id": "cameras",
         "title": "Choose your cameras",
-        "icon": "/livestream.svg",
+        "icon": "/icons/livestream.svg",
         "selectionMode": "quantity",
         "reviewLabel": "Cameras",
         "items": [
@@ -68,7 +68,7 @@
     {
         "id": "plan",
         "title": "Choose your plan",
-        "icon": "/plan.svg",
+        "icon": "/icons/plan.svg",
         "selectionMode": "single",
         "reviewLabel": "HOME MONITORING PLAN",
         "items": [
@@ -97,7 +97,7 @@
     {
         "id": "sensors",
         "title": "Choose your sensors",
-        "icon": "/sensors.svg",
+        "icon": "/icons/sensors.svg",
         "selectionMode": "quantity",
         "reviewLabel": "Sensors",
         "items": [
@@ -123,7 +123,7 @@
     {
         "id": "protection",
         "title": "Add extra protection",
-        "icon": "/extra.svg",
+        "icon": "/icons/protection.svg",
         "selectionMode": "quantity",
         "reviewLabel": "Accessories",
         "items": [
