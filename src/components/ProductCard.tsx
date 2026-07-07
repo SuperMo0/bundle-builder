@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import type { KeyboardEvent } from 'react'
-import type { BundleItem, ColorVariant } from '../types'
+import type { BundleItem, ColorVariant, SelectionMode } from '../types'
 import Stepper from './Stepper'
 import VariantPicker from './VariantPicker'
 import PriceDisplay from './PriceDisplay'
@@ -16,7 +16,7 @@ interface ProductCardProps {
     quantity: number
     onQuantityChange: (itemId: string, quantity: number) => void
 
-    selectionMode: 'quantity' | 'single'
+    selectionMode: SelectionMode
 }
 
 

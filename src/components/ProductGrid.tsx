@@ -1,3 +1,4 @@
+import type { SelectionMode } from '../types'
 import type { ProductCardItem } from './ProductCard'
 import ProductCard from './ProductCard'
 import './ProductGrid.css'
@@ -7,7 +8,7 @@ interface ProductGridProps {
     quantities: Record<string, number>
     onQuantityChange: (itemId: string, quantity: number) => void
 
-    selectionMode: 'quantity' | 'single'
+    selectionMode: SelectionMode
 }
 
 export default function ProductGrid({ items, quantities, onQuantityChange, selectionMode }: ProductGridProps) {

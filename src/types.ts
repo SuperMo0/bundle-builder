@@ -1,5 +1,7 @@
 export type BillingPeriod = 'once' | 'month'
 
+export type SelectionMode = 'quantity' | 'single'
+
 export interface ColorVariant {
     name: string
     image: string
