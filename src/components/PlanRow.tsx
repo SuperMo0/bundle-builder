@@ -10,7 +10,7 @@ interface PlanRowProps {
 
 export default function PlanRow({ planTier, price, originalPrice }: PlanRowProps) {
     return (
-        <div className='PlaneLineItem'>
+        <div className='PlanLineItem'>
             <PlanImage variantLabel={planTier ?? ''} />
             <PriceDisplay price={price} originalPrice={originalPrice} variant="line" suffix="/mo" />
         </div>
