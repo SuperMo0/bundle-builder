@@ -22,7 +22,6 @@ export interface PlanStep {
 }
 
 export type BundleStep = QuantityStep | PlanStep
-export type StepSelectionMode = BundleStep['selectionMode']
 
 export const bundleSteps: BundleStep[] = [
     {

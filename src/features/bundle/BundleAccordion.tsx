@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useBundleSteps } from './useBundleSteps'
 import { StepAccordion, StepAccordionItem } from '../../components/StepAccordion'
-import ProductGrid from '../../components/ProductGrid';
+import ProductGrid from '../../components/ProductGrid'
+import PlanGrid from '../../components/PlanGrid'
 import type { BundleSelections } from './bundle.config'
 
 
@@ -30,14 +31,22 @@ export default function BundleAccordion({ selections, setQuantity, getSelectedCo
                         selectedLabel={`${getSelectedCount(step.id)} selected`}
                         nextTitle={nextStep?.title}
                         onNext={nextStep ? () => setActiveStep(nextStep.id) : undefined}>
-                        <ProductGrid
-                            key={step.id}
-                            items={step.items}
-                            quantities={selections[step.id]}
-                            onQuantityChange={(itemId, variantKey, quantity) => { setQuantity(step.id, itemId, variantKey, quantity) }}
-                            getMinQuantity={(itemId) => getMinQuantity(step.id, itemId)}
-                            selectionMode={step.selectionMode}
-                        />
+                        {step.selectionMode === 'quantity' ? (
+                            <ProductGrid
+                                key={step.id}
+                                items={step.items}
+                                quantities={selections[step.id]}
+                                onQuantityChange={(itemId, variantKey, quantity) => { setQuantity(step.id, itemId, variantKey, quantity) }}
+                                getMinQuantity={(itemId) => getMinQuantity(step.id, itemId)}
+                            />
+                        ) : (
+                            <PlanGrid
+                                key={step.id}
+                                items={step.items}
+                                quantities={selections[step.id]}
+                                onQuantityChange={(itemId, variantKey, quantity) => { setQuantity(step.id, itemId, variantKey, quantity) }}
+                            />
+                        )}
                     </StepAccordionItem>
                 )
             })}
