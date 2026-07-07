@@ -1,7 +1,3 @@
-/* .AccordionItem {
-  
-} */
-
 .AccordionHeader {
   display: flex;
   padding: var(--space-5) var(--space-4);
@@ -9,14 +5,9 @@
   border-bottom: 0.5px solid var(--color-text-title);
 }
 
-.AccordionHeader[data-state='open'] {
-  border-bottom-width: 0;
-}
-
 .AccordionHeader[data-state='closed'] {
   transition: border-bottom-width 0s 200ms ease;
 }
-
 
 .AccordionTrigger {
   all: unset;

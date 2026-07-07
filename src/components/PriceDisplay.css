@@ -51,6 +51,6 @@
     color: var(--color-red);
   }
   .PriceDisplay[data-variant="card"] .PriceDisplay-current {
-    color: rgb(var(--color-gray-neutral-700));
+    color: rgb(var(--base-gray-neutral-700));
   }
 }
