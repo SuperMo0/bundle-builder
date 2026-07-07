@@ -1,9 +1,9 @@
 import { produce } from 'immer'
 import { useState } from 'react'
-import type { BundleStep } from './bundle.config'
+import type { BundleStep, BundleSelections } from './bundle.config'
 
 
-function createInitialSelections(steps: BundleStep[]): Record<string, Record<string, number>> {
+function createInitialSelections(steps: BundleStep[]): BundleSelections {
     return Object.fromEntries(
         steps.map((step) => [
             step.id,
@@ -15,7 +15,7 @@ function createInitialSelections(steps: BundleStep[]): Record<string, Record<str
 }
 export function useBundleSelection(steps: BundleStep[]) {
 
-    const [selections, setSelections] = useState<Record<string, Record<string, number>>>(() => createInitialSelections(steps))
+    const [selections, setSelections] = useState<BundleSelections>(() => createInitialSelections(steps))
 
     const setQuantity = (stepId: string, itemId: string, qty: number) => {
         const step = steps.find((s) => s.id === stepId)

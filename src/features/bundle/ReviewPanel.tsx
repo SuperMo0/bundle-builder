@@ -2,6 +2,7 @@ import { bundleSteps } from './bundle.config'
 import ReviewLineItem from '../../components/ReviewLineItem'
 import PlanRow from '../../components/PlanRow'
 import ReviewSummary from '../../components/ReviewSummary'
+import type { BundleSelections } from './bundle.config'
 import './ReviewPanel.css'
 
 interface ReviewLineItemData {
@@ -14,7 +15,7 @@ interface ReviewLineItemData {
 }
 
 interface ReviewPanelProps {
-    selections: Record<string, Record<string, number>>
+    selections: BundleSelections
     setQuantity: (stepId: string, itemId: string, qty: number) => void
 }
 

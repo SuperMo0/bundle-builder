@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { bundleSteps } from './bundle.config'
 import { StepAccordion, StepAccordionItem } from '../../components/StepAccordion'
 import ProductGrid from '../../components/ProductGrid';
+import type { BundleSelections } from './bundle.config'
 
 
 interface BundleAccordion {
-    selections: Record<string, Record<string, number>>;
+    selections: BundleSelections;
     setQuantity: (stepId: string, itemId: string, qty: number) => void;
     getSelectedCount: (stepId: string) => number;
 }

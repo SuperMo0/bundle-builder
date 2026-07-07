@@ -2,6 +2,8 @@ import type { BundleItem } from "../../types"
 
 export type StepSelectionMode = 'quantity' | 'single'
 
+export type BundleSelections = Record<string, Record<string, number>>
+
 export interface BundleStep {
     id: string
     title: string
