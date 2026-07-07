@@ -5,14 +5,14 @@
 .PageHeader-title {
   font-size: var(--font-size-3xl);
   text-align: center;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   letter-spacing: -0.06px;
-  line-height: 110.00000000000001%;
+  line-height: 110%;
 }
 
 
-@media (min-width: 1280px) {
-  .PageHeader-title{
+@media (min-width: 550px) {
+  .PageHeader{
     display:none;
   }
 }

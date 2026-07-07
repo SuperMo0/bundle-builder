@@ -4,13 +4,7 @@
 }
 
 
-@media (min-width: 500px) {
-  .Page{
-   padding-inline: var(--container-padding-inline);
-}
-}
-
-@media (min-width: 1024px) {
+@media (min-width: 550px) {
   .Page{
    padding-inline: var(--container-padding-inline);
 }

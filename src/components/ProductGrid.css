@@ -1,32 +1,9 @@
 .ProductGrid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   gap: var(--space-4);
 }
 
-@media (min-width: 550px) {
-  .ProductGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 768px) {
-  .ProductGrid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (min-width: 868px) {
-  .ProductGrid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-@media (min-width: 1068px) {
-  .ProductGrid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
 
 @media (min-width: 1280px) {
   .ProductGrid {
@@ -41,7 +18,7 @@
 .ProductGrid {
     padding-inline:var(--space-2);
   }
-@media (min-width: 500px) {
+@media (min-width: 550px) {
   .ProductGrid {
     padding-inline:0
   }
