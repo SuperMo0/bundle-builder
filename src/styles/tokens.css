@@ -4,7 +4,7 @@
   src: url('/fonts/Gilroy-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
-  font-display: swap; /* Modern standard to prevent invisible text while loading */
+  font-display: swap;
 }
 
 @font-face {
@@ -26,8 +26,8 @@
 @font-face {
   font-family: 'Gilroy';
   src: url('/fonts/Gilroy-RegularItalic.woff') format('woff');
-  font-weight: 400;     /* 400 = Regular */
-  font-style: italic;   /* This is the magic key! */
+  font-weight: 400; 
+  font-style: italic;   
   font-display: swap;
 }
 
@@ -35,11 +35,6 @@
 
 :root {
   color-scheme: light;
-
-  /* =========================================
-     1. PRIMITIVE PALETTE (The "What")
-     Raw RGB channels for modern opacity support
-     ========================================= */
 
   /* Brand Colors */
   --color-brand-purple: 78 47 210;    /* The core Wyze purple */
@@ -54,31 +49,24 @@
   --color-gray-c-600: 111 120 130;    /* Cool medium gray */
   --color-gray-c-500: 168 178 189;    /* Cool light gray */
 
-  /* =========================================
-     2. SEMANTIC TOKENS (The "Where")
-     Assigned directly to specific UI components
-     ========================================= */
+ 
+  --color-text-title: rgb(var(--color-gray-900));
+  --color-text-title-review: rgb(var(--color-gray-950));
+  --color-text-eyebrow: rgb(var(--color-gray-700));      
+  --color-text-description: rgb(var(--color-gray-900) / 0.75);
+  --color-text-section-header: rgb(var(--color-gray-c-500)); 
 
-  /* Typography: Standard Text */
-  --color-text-title: rgb(var(--color-gray-900));              /* Main headers: "Let's get started!" */
-  --color-text-title-review: rgb(var(--color-gray-950));       /* Line items: "Wyze Cam v4" */
-  --color-text-eyebrow: rgb(var(--color-gray-700));            /* Small top labels: "STEP 1 OF 4" */
-  --color-text-description: rgb(var(--color-gray-900) / 0.75); /* Subtext: "Review your personalized..." */
-  --color-text-section-header: rgb(var(--color-gray-c-500));   /* Group labels: "CAMERAS", "SENSORS" */
+  --color-text-interactive: rgb(var(--color-brand-purple));    
+  --color-text-success: rgb(var(--color-brand-teal));         
+  --color-text-price-strikethrough: rgb(var(--color-gray-c-600));
 
-  /* Typography: Status & Interactive */
-  --color-text-interactive: rgb(var(--color-brand-purple));    /* "2 selected", "$187.89", "as low as" */
-  --color-text-success: rgb(var(--color-brand-teal));          /* "Congrats! You're saving..." */
-  --color-text-price-strikethrough: rgb(var(--color-gray-c-600)); /* Crossed-out original prices */
+  --color-bg-primary: rgb(var(--color-brand-purple));          
+  --color-bg-surface: rgb(var(--color-white));                 
 
-  /* Backgrounds & Surfaces */
-  --color-bg-primary: rgb(var(--color-brand-purple));          /* The main "Checkout" button */
-  --color-bg-surface: rgb(var(--color-white));                 /* Standard page background */
-
-  /* Icons & UI Elements */
-  --color-icon-stepper: rgb(var(--color-gray-neutral-700));    /* The +/- symbols in the cart controls */
+  --color-icon-stepper: rgb(var(--color-gray-neutral-700));
 
   --color-background: #FFFFFF;
+  --color-red:rgba(216, 57, 43, 1);
   --color-surface: #FFFFFF;
   --color-surface-elevated: #EDF4FF;
   --color-surface-muted: #F2F2F5;
@@ -129,13 +117,8 @@
   --shadow-md: 0 4px 12px rgb(0 0 0 / 8%);
 
   --container-max-width: 1440px;
-  --container-padding-inline: clamp(1rem, 1rem + 1.7857vw, 1.8rem);
-}
+  --container-padding-inline: clamp(0.5rem, 0.5rem + 1.7857vw, 1.8rem);
 
-
-
-:root {
-  --font-primary: 'Gilroy', sans-serif;
 }
 
   /* Breakpoints (px)
