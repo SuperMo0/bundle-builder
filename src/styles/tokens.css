@@ -1,7 +1,10 @@
-
+/* =========================================
+   FONTS
+   ========================================= */
 @font-face {
   font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-Medium.woff') format('woff');
+  src: url('/fonts/Gilroy-Medium.woff2') format('woff2'),
+       url('/fonts/Gilroy-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -9,7 +12,8 @@
 
 @font-face {
   font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-SemiBold.woff') format('woff');
+  src: url('/fonts/Gilroy-SemiBold.woff2') format('woff2'),
+       url('/fonts/Gilroy-SemiBold.woff') format('woff');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -17,7 +21,8 @@
 
 @font-face {
   font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-Bold.woff') format('woff');
+  src: url('/fonts/Gilroy-Bold.woff2') format('woff2'),
+       url('/fonts/Gilroy-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -25,64 +30,84 @@
 
 @font-face {
   font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-RegularItalic.woff') format('woff');
+  src: url('/fonts/Gilroy-RegularItalic.woff2') format('woff2'),
+       url('/fonts/Gilroy-RegularItalic.woff') format('woff');
   font-weight: 400; 
   font-style: italic;   
   font-display: swap;
 }
 
-
-
+/* =========================================
+   GLOBAL VARIABLES
+   ========================================= */
 :root {
   color-scheme: light;
 
-  /* Brand Colors */
-  --color-brand-purple: 78 47 210;    /* The core Wyze purple */
-  --color-brand-teal: 10 162 136;     /* The success green/teal */
+  /* --- 1. BASE COLOR TOKENS (Raw RGB for Alpha Injection) --- */
+  
+  /* Brand */
+  --base-purple: 78 47 210;
+  --base-teal: 10 162 136;
+  --base-red: 216 57 43;
 
-  /* Neutrals & Cool Grays */
-  --color-white: 255 255 255;
-  --color-gray-950: 11 13 16;         /* Heaviest dark */
-  --color-gray-900: 31 31 31;         /* Primary dark */
-  --color-gray-700: 72 72 72;         /* Medium dark */
-  --color-gray-neutral-700: 87 87 87; /* True neutral gray */
-  --color-gray-c-600: 111 120 130;    /* Cool medium gray */
-  --color-gray-c-500: 168 178 189;    /* Cool light gray */
+  /* Neutrals & Grays */
+  --base-white: 255 255 255;
+  --base-gray-950: 11 13 16;
+  --base-gray-900: 31 31 31;
+  --base-gray-700: 72 72 72;
+  --base-gray-neutral-700: 87 87 87;
+  --base-gray-c-600: 111 120 130;
+  --base-gray-c-500: 168 178 189;
 
- 
-  --color-text-title: rgb(var(--color-gray-900));
-  --color-text-title-review: rgb(var(--color-gray-950));
-  --color-text-eyebrow: rgb(var(--color-gray-700));      
-  --color-text-description: rgb(var(--color-gray-900) / 0.75);
-  --color-text-section-header: rgb(var(--color-gray-c-500)); 
+  /* Structural Bases (Converted from Hex to RGB) */
+  --base-surface-elevated: 237 244 255; /* #EDF4FF */
+  --base-surface-muted: 242 242 245;    /* #F2F2F5 */
+  --base-border-default: 204 204 204;   /* #CCCCCC */
 
-  --color-text-interactive: rgb(var(--color-brand-purple));    
-  --color-text-success: rgb(var(--color-brand-teal));         
-  --color-text-price-strikethrough: rgb(var(--color-gray-c-600));
 
-  --color-bg-primary: rgb(var(--color-brand-purple));          
-  --color-bg-surface: rgb(var(--color-white));                 
+  /* --- 2. SEMANTIC COLOR TOKENS --- */
+  
+  /* Backgrounds & Surfaces */
+  --color-bg-primary: rgb(var(--base-purple));
+  --color-bg-surface: rgb(var(--base-white));
+  --color-background: rgb(var(--base-white));
+  --color-surface: rgb(var(--base-white));
+  --color-surface-elevated: rgb(var(--base-surface-elevated));
+  --color-surface-muted: rgb(var(--base-surface-muted));
 
-  --color-icon-stepper: rgb(var(--color-gray-neutral-700));
+  /* Text */
+  --color-text-title: rgb(var(--base-gray-900));
+  --color-text-title-review: rgb(var(--base-gray-950));
+  --color-text-eyebrow: rgb(var(--base-gray-700));
+  --color-text-section-header: rgb(var(--base-gray-c-500));
+  --color-text-interactive: rgb(var(--base-purple));
+  --color-text-success: rgb(var(--base-teal));
+  --color-text-price-strikethrough: rgb(var(--base-gray-c-600));
+  
+  /* Modern CSS Alpha syntax instead of rgba() */
+  --color-text-description: rgb(var(--base-gray-900) / 75%); 
 
-  --color-background: #FFFFFF;
-  --color-red:rgba(216, 57, 43, 1);
-  --color-surface: #FFFFFF;
-  --color-surface-elevated: #EDF4FF;
-  --color-surface-muted: #F2F2F5;
-  --color-border: rgba(204, 204, 204, 1);
-  --color-button-foreground: #FFFFFF;
+  /* UI Elements */
+  --color-icon-stepper: rgb(var(--base-gray-neutral-700));
+  --color-border: rgb(var(--base-border-default));
+  --color-button-foreground: rgb(var(--base-white));
+  --color-red: rgb(var(--base-red));
 
-  --font-family-base: 'Gilroy', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji';
+
+  /* --- 3. TYPOGRAPHY --- */
+  
+  --font-family-base: 'Gilroy', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  
+  /* Weights & Heights */
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  
   --line-height-tight: 1.15;
   --line-height-heading: 1.25;
   --line-height-normal: 1.5;
 
-   
+  /* Fluid Scales */
   --font-size-xs: clamp(0.625rem, 0.5786rem + 0.1905vw, 0.75rem);
   --font-size-sm: clamp(0.8125rem, 0.6307rem + 0.9091vw, 0.875rem);
   --font-size-base: clamp(0.9375rem, 0.7557rem + 0.9091vw, 1rem);
@@ -93,6 +118,9 @@
   --font-size-3xl: clamp(1.6875rem, 0.7784rem + 4.5455vw, 2rem);
   --font-size-4xl: clamp(1.875rem, 0.7841rem + 5.4545vw, 2.25rem);
 
+
+  /* --- 4. SPACING --- */
+  
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -106,6 +134,9 @@
   --space-12: 3rem;
   --space-16: 4rem;
 
+
+  /* --- 5. BORDERS & SHADOWS --- */
+  
   --radius-xxs: 0.125rem;
   --radius-xs: 0.25rem;
   --radius-sm: 0.5rem;
@@ -113,17 +144,13 @@
   --radius-lg: 1rem;
   --radius-full: 999px;
 
+  /* Modern standard: use rgb with slash for shadow alphas */
   --shadow-sm: 0 1px 2px rgb(0 0 0 / 6%);
   --shadow-md: 0 4px 12px rgb(0 0 0 / 8%);
 
+
+  /* --- 6. LAYOUT --- */
+  
   --container-max-width: 1440px;
   --container-padding-inline: clamp(0.5rem, 0.78rem + 1.7857vw, 1.8rem);
-
 }
-
-  /* Breakpoints (px)
-  /* sm: 480   → large phones */
-  /* md: 768   → tablets */
-  /* lg: 1024  → small desktop */
-  /* xl: 1280  → desktop */
-
