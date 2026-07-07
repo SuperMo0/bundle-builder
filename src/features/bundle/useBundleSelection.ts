@@ -51,8 +51,8 @@ export function useBundleSelection(steps: BundleStep[]) {
 
     const getSelectedCount = (stepId: string) =>
         Object.values(selections[stepId] ?? {})
-            .flatMap((variantQuantities) => Object.values(variantQuantities))
-            .filter((qty) => qty > 0).length
+            .filter((variantQuantities) => Object.values(variantQuantities).some((qty) => qty > 0))
+            .length
 
     const getMinQuantity = (stepId: string, itemId: string) => minQuantityForItem(steps, stepId, itemId)
 
