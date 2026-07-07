@@ -51,12 +51,16 @@ export default function ReviewPanel({ selections, setQuantity, getMinQuantity }:
                 )}
 
                 {selectedPlan && (
-                    <PlanRow
-                        label={planLabel}
-                        planTier={selectedPlan.planTier}
-                        price={selectedPlan.price}
-                        originalPrice={selectedPlan.originalPrice}
-                    />
+                    <>
+                        <div className="ReviewPanel-section" key={selectedPlan.id}>
+                            <span className="ReviewPanel-section-label">{planLabel}</span>
+                            <PlanRow
+                                planTier={selectedPlan.planTier}
+                                price={selectedPlan.price}
+                                originalPrice={selectedPlan.originalPrice}
+                            />
+                        </div>
+                    </>
                 )}
 
                 <ReviewSummary totalPrice={totalPrice} totalOriginalPrice={totalOriginalPrice} />
