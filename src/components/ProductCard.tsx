@@ -24,7 +24,8 @@ export default function ProductCard({ bundleItem, quantity, onQuantityChange }: 
         : null
 
     return (
-        <div className="ProductCard">
+        <div className="ProductCard" data-selected={quantity > 0 || undefined}
+        >
             <div className="ProductCard-media">
                 {savingsPercent !== null && (
                     <span className="ProductCard-badge">Save {savingsPercent}%</span>
@@ -62,7 +63,7 @@ export default function ProductCard({ bundleItem, quantity, onQuantityChange }: 
                 </div>
 
             </div>
-        </div>
+        </div >
 
     )
 }
