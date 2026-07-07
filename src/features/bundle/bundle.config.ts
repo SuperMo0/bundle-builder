@@ -143,6 +143,7 @@ export const bundleSteps: BundleStep[] = [
                 name: 'Wyze MicroSD Card (256GB)',
                 description: 'Local backup storage for continuous recording, no subscription required.',
                 image: '/products/wyze-microsd-256gb.png',
+                defaultQuantity: 2,
                 price: 20.98,
             },
         ],

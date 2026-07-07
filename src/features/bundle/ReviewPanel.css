@@ -52,7 +52,10 @@
 
 @media (min-width: 1280px) {
   .ReviewPanel {
-    padding-inline: 0;
+    padding-inline: var(--space-2);
     max-width: 400px;
+  }
+  .ReviewPanel-eyebrow{
+    padding-inline: 0;
   }
 }

@@ -32,6 +32,11 @@
   .ProductGrid {
     grid-template-columns: repeat(2, 1fr);
   }
+ .ProductGrid > *:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - var(--space-4) / 2);
+    justify-self: center;
+  }
 }
 .ProductGrid {
     padding-inline:var(--space-2);
