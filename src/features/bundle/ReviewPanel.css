@@ -43,13 +43,6 @@
   color: var(--color-text-section-header);
 }
 
-.ReviewLineItem-price {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: var(--space-1);
-}
-
 @media (min-width: 1280px) {
   .ReviewPanel {
     padding-inline: var(--space-2);

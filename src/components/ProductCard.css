@@ -79,25 +79,6 @@
   gap: var(--space-3);
 }
 
-.ProductCard-price {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: var(--space-1);
-}
-
-.ProductCard-price-original {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-price-strikethrough);
-  text-decoration: line-through;
-}
-
-.ProductCard-price-current {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-interactive);
-}
-
 .ProductCard[data-selected="true"] {
   border: 1px solid rgb(var(--color-brand-purple)/0.75);
   box-shadow: var(--shadow-md);
@@ -121,12 +102,6 @@
   .ProductCard-image{
     width: 8rem;
     height: 8rem;
-  }
-  .ProductCard-price-original{
-    color: var(--color-red);
-  }
-   .ProductCard-price-current{
-    color: rgb(var(--color-gray-neutral-700));
   }
 }
 

@@ -17,16 +17,3 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-title-review);
 }
-
-
-.ReviewLineItem-price-original {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-price-strikethrough);
-  text-decoration: line-through;
-}
-
-.ReviewLineItem-price-current {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-interactive);
-}

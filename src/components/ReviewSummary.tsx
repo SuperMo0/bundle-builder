@@ -1,4 +1,5 @@
 import './ReviewSummary.css'
+import PriceDisplay from './PriceDisplay'
 
 interface ReviewSummaryProps {
     totalPrice: number
@@ -6,7 +7,7 @@ interface ReviewSummaryProps {
 }
 
 function formatPrice(price: number) {
-    return price === 0 ? 'FREE' : `$${price.toFixed(2)}`
+    return `$${price.toFixed(2)}`
 }
 
 export default function ReviewSummary({ totalPrice, totalOriginalPrice }: ReviewSummaryProps) {
@@ -17,10 +18,7 @@ export default function ReviewSummary({ totalPrice, totalOriginalPrice }: Review
             <div className="ReviewSummary-shipping">
                 <img src="/carbon_delivery.svg" alt="" className="ReviewSummary-shipping-icon" />
                 <p className="ReviewSummary-shipping-label">Fast Shipping</p>
-                <div className="ReviewLineItem-price">
-                    <span className="ReviewSummary-shipping-price-original">$5.99</span>
-                    <span className="ReviewSummary-shipping-price-current">FREE</span>
-                </div>
+                <PriceDisplay price={0} originalPrice={5.99} variant="line" />
             </div>
 
             <div className="ReviewSummary-total">
@@ -31,10 +29,7 @@ export default function ReviewSummary({ totalPrice, totalOriginalPrice }: Review
                 />
                 <div className="ReviewSummary-total-details">
                     <span className="ReviewSummary-financing">as low as $19.19/mo</span>
-                    <div className="ReviewSummary-total-price">
-                        <span className="ReviewSummary-total-price-original">{formatPrice(totalOriginalPrice)}</span>
-                        <span className="ReviewSummary-total-price-current">{formatPrice(totalPrice)}</span>
-                    </div>
+                    <PriceDisplay price={totalPrice} originalPrice={totalOriginalPrice} variant="total" />
                 </div>
             </div>
 

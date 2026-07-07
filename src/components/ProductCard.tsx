@@ -3,6 +3,7 @@ import type { KeyboardEvent } from 'react'
 import type { BundleItem } from '../types'
 import Stepper from './Stepper'
 import VariantPicker from './VariantPicker'
+import PriceDisplay from './PriceDisplay'
 import './ProductCard.css'
 
 interface ProductCardProps {
@@ -13,9 +14,6 @@ interface ProductCardProps {
     selectionMode: 'quantity' | 'single'
 }
 
-function formatPrice(price: number) {
-    return price === 0 ? 'FREE' : `$${price.toFixed(2)}`
-}
 
 export default function ProductCard({ bundleItem, quantity, onQuantityChange, selectionMode }: ProductCardProps) {
     const { id, name, description, image, price, originalPrice, colors, required } = bundleItem
@@ -79,13 +77,7 @@ export default function ProductCard({ bundleItem, quantity, onQuantityChange, se
                                 min={required ? 1 : 0}
                             />
                         )}
-
-                        <div className="ProductCard-price">
-                            {hasDiscount && (
-                                <span className="ProductCard-price-original">{formatPrice(originalPrice)}</span>
-                            )}
-                            <span className="ProductCard-price-current">{formatPrice(price)}</span>
-                        </div>
+                        <PriceDisplay price={price} originalPrice={originalPrice} variant="card" />
                     </div>
                 </div>
 

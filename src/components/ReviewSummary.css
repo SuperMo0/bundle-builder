@@ -23,18 +23,6 @@
 }
 
 
-.ReviewSummary-shipping-price-original {
-  font-size: var(--font-size-xs);
-  color: var(--color-text-price-strikethrough);
-  text-decoration: line-through;
-}
-
-.ReviewSummary-shipping-price-current {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  color: var(--color-text-interactive);
-}
-
 .ReviewSummary-total {
   display: flex;
   align-items: center;
@@ -63,24 +51,6 @@
   color: var(--color-button-foreground);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-medium);
-}
-
-.ReviewSummary-total-price {
-  display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
-}
-
-.ReviewSummary-total-price-original {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-price-strikethrough);
-  text-decoration: line-through;
-}
-
-.ReviewSummary-total-price-current {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-interactive);
 }
 
 .ReviewSummary-savings {

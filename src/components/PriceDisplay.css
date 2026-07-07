@@ -1,0 +1,56 @@
+.PriceDisplay {
+  display: flex;
+  gap: var(--space-1);
+}
+
+.PriceDisplay-original {
+  color: var(--color-text-price-strikethrough);
+  text-decoration: line-through;
+}
+
+.PriceDisplay-current {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-interactive);
+}
+
+.PriceDisplay[data-variant="card"],
+.PriceDisplay[data-variant="line"] {
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.PriceDisplay[data-variant="card"] .PriceDisplay-original {
+  font-size: var(--font-size-sm);
+}
+.PriceDisplay[data-variant="card"] .PriceDisplay-current {
+  font-size: var(--font-size-base);
+}
+
+.PriceDisplay[data-variant="line"] .PriceDisplay-original {
+  font-size: var(--font-size-xs);
+}
+.PriceDisplay[data-variant="line"] .PriceDisplay-current {
+  font-size: var(--font-size-sm);
+}
+
+.PriceDisplay[data-variant="total"] {
+  flex-direction: row;
+  align-items: baseline;
+  gap: var(--space-2);
+}
+.PriceDisplay[data-variant="total"] .PriceDisplay-original {
+  font-size: var(--font-size-sm);
+}
+.PriceDisplay[data-variant="total"] .PriceDisplay-current {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+}
+
+@media (min-width: 550px) {
+  .PriceDisplay[data-variant="card"] .PriceDisplay-original {
+    color: var(--color-red);
+  }
+  .PriceDisplay[data-variant="card"] .PriceDisplay-current {
+    color: rgb(var(--color-gray-neutral-700));
+  }
+}
