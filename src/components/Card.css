@@ -79,7 +79,8 @@
   gap: var(--space-3);
 }
 
-.ProductCard[data-selected="true"] {
+.ProductCard[data-selected="true"],
+.ProductCard[data-state="checked"] {
   border: 1px solid rgb(var(--color-brand-purple)/0.75);
   box-shadow: var(--shadow-md);
 }

@@ -1,31 +1,20 @@
 import { useState } from 'react'
-import type { ComponentProps } from 'react'
-import type { SelectionMode, QuantityItem } from '../types'
+import type { QuantityItem } from '../types'
 import { DEFAULT_VARIANT_KEY } from '../types'
 import Stepper from './Stepper'
 import VariantPicker from './VariantPicker'
 import PriceDisplay from './PriceDisplay'
-import './ProductCard.css'
+import './Card.css'
 
 
-interface ProductCardProps extends ComponentProps<'div'> {
+interface ProductCardProps {
     bundleItem: QuantityItem
     quantities: Record<string, number>
     onQuantityChange: (itemId: string, variantKey: string, quantity: number) => void
     min: number
-
-    selectionMode: SelectionMode
 }
 
-export default function ProductCard({
-    bundleItem,
-    quantities,
-    onQuantityChange,
-    min,
-    selectionMode,
-    ref,
-    ...radioProps
-}: ProductCardProps) {
+export default function ProductCard({ bundleItem, quantities, onQuantityChange, min }: ProductCardProps) {
     const { id, name, description, image, price, originalPrice, colors } = bundleItem
     const [selectedColor, setSelectedColor] = useState(colors?.[0]?.name)
 
@@ -39,12 +28,7 @@ export default function ProductCard({
         : null
 
     return (
-        <div
-            {...radioProps}
-            ref={ref}
-            className="ProductCard"
-            data-selected={isSelected || undefined}
-        >
+        <div className="ProductCard" data-selected={isSelected || undefined}>
             <div className="ProductCard-media">
                 {savingsPercent !== null && (
                     <span className="ProductCard-badge">Save {savingsPercent}%</span>
@@ -66,13 +50,11 @@ export default function ProductCard({
                     )}
 
                     <div className="ProductCard-controls">
-                        {selectionMode === 'quantity' && (
-                            <Stepper
-                                quantity={quantity}
-                                onChange={(qty) => onQuantityChange(id, variantKey, qty)}
-                                min={min}
-                            />
-                        )}
+                        <Stepper
+                            quantity={quantity}
+                            onChange={(qty) => onQuantityChange(id, variantKey, qty)}
+                            min={min}
+                        />
                         <PriceDisplay price={price} originalPrice={originalPrice} variant="card" />
                     </div>
                 </div>
