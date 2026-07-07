@@ -49,3 +49,10 @@
   align-items: flex-end;
   gap: var(--space-1);
 }
+
+@media (min-width: 1280px) {
+  .ReviewPanel {
+    padding-inline: 0;
+    max-width: 400px;
+  }
+}

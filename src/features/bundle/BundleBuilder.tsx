@@ -1,15 +1,15 @@
-// features/bundle/BundleBuilder.tsx
 import BundleAccordion from './BundleAccordion'
 import ReviewPanel from './ReviewPanel'
 import { useBundleSelection } from './useBundleSelection'
 import { bundleSteps } from './bundle.config'
+import "./BundleBuilder.css"
 
 export default function BundleBuilder() {
     const { selections, getSelectedCount, setQuantity } = useBundleSelection(bundleSteps)
 
     return (
-        <>
-            <section className="PageSteps" aria-label="Bundle steps">
+        <div className="BundleBuilder">
+            <section className="BundleBuilder-steps" aria-label="Bundle steps">
                 <BundleAccordion
                     selections={selections}
                     getSelectedCount={getSelectedCount}
@@ -17,12 +17,11 @@ export default function BundleBuilder() {
                 />
             </section>
 
-            <section className="PageReview">
-                <div className="PageReview-inner">
-                    <span className="ReviewPanel-eyebrow">Review</span>
+            <section className="BundleBuilder-review">
+                <div className="BundleBuilder-review-inner">
                     <ReviewPanel selections={selections} setQuantity={setQuantity} />
                 </div>
             </section>
-        </>
+        </div>
     )
 }

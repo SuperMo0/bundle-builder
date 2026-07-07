@@ -58,45 +58,48 @@ export default function ReviewPanel({ selections, setQuantity }: ReviewPanelProp
         lineItemTotals.originalPrice + (selectedPlan ? selectedPlan.originalPrice ?? selectedPlan.price : 0)
 
     return (
-        <div className="ReviewPanel container">
-            <div className="ReviewPanel-header">
-                <h2 className="ReviewPanel-title">Your security system</h2>
-                <p className="ReviewPanel-description">
-                    Review your personalized protection system designed to keep what matters most safe.
-                </p>
+        <>
+            <span className="ReviewPanel-eyebrow">Review</span>
+            <div className="ReviewPanel container">
+                <div className="ReviewPanel-header">
+                    <h2 className="ReviewPanel-title">Your security system</h2>
+                    <p className="ReviewPanel-description">
+                        Review your personalized protection system designed to keep what matters most safe.
+                    </p>
+                </div>
+
+                {sections.map(
+                    (section) =>
+                        section.lineItems.length > 0 && (
+                            <div className="ReviewPanel-section" key={section.id}>
+                                <span className="ReviewPanel-section-label">{section.label}</span>
+                                {section.lineItems.map((lineItem) => (
+                                    <ReviewLineItem
+                                        key={lineItem.id}
+                                        name={lineItem.name}
+                                        image={lineItem.image}
+                                        quantity={lineItem.quantity}
+                                        price={lineItem.price}
+                                        originalPrice={lineItem.originalPrice}
+                                        onQuantityChange={(qty) => setQuantity(section.id, lineItem.id, qty)}
+                                    />
+                                ))}
+                            </div>
+                        )
+                )}
+
+                {selectedPlan && (
+                    <>
+                        <PlanRow
+                            variant={selectedPlan.id === 'cam-unlimited' ? 'unlimited' : 'basic'}
+                            price={selectedPlan.price}
+                            originalPrice={selectedPlan.originalPrice}
+                        />
+                    </>
+                )}
+
+                <ReviewSummary totalPrice={totalPrice} totalOriginalPrice={totalOriginalPrice} />
             </div>
-
-            {sections.map(
-                (section) =>
-                    section.lineItems.length > 0 && (
-                        <div className="ReviewPanel-section" key={section.id}>
-                            <span className="ReviewPanel-section-label">{section.label}</span>
-                            {section.lineItems.map((lineItem) => (
-                                <ReviewLineItem
-                                    key={lineItem.id}
-                                    name={lineItem.name}
-                                    image={lineItem.image}
-                                    quantity={lineItem.quantity}
-                                    price={lineItem.price}
-                                    originalPrice={lineItem.originalPrice}
-                                    onQuantityChange={(qty) => setQuantity(section.id, lineItem.id, qty)}
-                                />
-                            ))}
-                        </div>
-                    )
-            )}
-
-            {selectedPlan && (
-                <>
-                    <PlanRow
-                        variant={selectedPlan.id === 'cam-unlimited' ? 'unlimited' : 'basic'}
-                        price={selectedPlan.price}
-                        originalPrice={selectedPlan.originalPrice}
-                    />
-                </>
-            )}
-
-            <ReviewSummary totalPrice={totalPrice} totalOriginalPrice={totalOriginalPrice} />
-        </div>
+        </>
     )
 }
