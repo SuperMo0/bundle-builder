@@ -8,7 +8,10 @@ function createInitialSelections(steps: BundleStep[]): BundleSelections {
         steps.map((step) => [
             step.id,
             Object.fromEntries(
-                step.items.map((item) => [item.id, item.defaultQuantity ?? (item.required ? 1 : 0)])
+                step.items.map((item) => {
+                    const isRequired = 'required' in item && item.required
+                    return [item.id, item.defaultQuantity ?? (isRequired ? 1 : 0)]
+                })
             ),
         ])
     )
@@ -20,14 +23,15 @@ export function useBundleSelection(steps: BundleStep[]) {
     const setQuantity = (stepId: string, itemId: string, qty: number) => {
         const step = steps.find((s) => s.id === stepId)
         const item = step?.items.find((i) => i.id === itemId)
-        const minQty = item?.required ? 1 : 0
+        const isRequired = !!item && 'required' in item && item.required
+        const minQty = isRequired ? 1 : 0
         const nextQty = Math.max(minQty, qty)
 
         setSelections(
             produce((draft) => {
                 draft[stepId] ??= {}
 
-                if (step?.selectionMode === 'single' && nextQty > 0) {
+                if (step && step.selectionMode === 'single' && nextQty > 0) {
                     step.items.forEach((sibling) => {
                         draft[stepId][sibling.id] = sibling.id === itemId ? nextQty : 0
                     })

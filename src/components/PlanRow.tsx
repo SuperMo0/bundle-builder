@@ -3,19 +3,18 @@ import PlanImage from './PlanImage'
 import PriceDisplay from './PriceDisplay'
 
 interface PlanRowProps {
-    variant: 'basic' | 'unlimited'
+    label?: string
+    planTier?: string
     price: number
     originalPrice?: number
 }
 
-export default function PlanRow({ variant, price, originalPrice }: PlanRowProps) {
-    const planLabel = variant === 'unlimited' ? 'Unlimited' : 'Basic'
-
+export default function PlanRow({ label, planTier, price, originalPrice }: PlanRowProps) {
     return (
         <div className="PlanRow">
-            <span className="ReviewPanel-section-label">HOME MONITORING PLANE</span>
+            <span className="ReviewPanel-section-label">{label}</span>
             <div className='PlaneLineItem'>
-                <PlanImage variantLabel={planLabel} />
+                <PlanImage variantLabel={planTier ?? ''} />
                 <PriceDisplay price={price} originalPrice={originalPrice} variant="line" suffix="/mo" />
             </div>
         </div>

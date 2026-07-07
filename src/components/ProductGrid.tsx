@@ -1,9 +1,9 @@
-import type { BundleItem } from '../types'
+import type { ProductCardItem } from './ProductCard'
 import ProductCard from './ProductCard'
 import './ProductGrid.css'
 
 interface ProductGridProps {
-    items: BundleItem[]
+    items: ProductCardItem[]
     quantities: Record<string, number>
     onQuantityChange: (itemId: string, quantity: number) => void
 

@@ -1,5 +1,4 @@
-import type { BundleItem } from '../../types'
-import type { BundleStep, BundleSelections } from './bundle.config'
+import type { BundleStep, BundleSelections, QuantityStep, PlanStep, PlanItem } from './bundle.config'
 
 export interface ReviewLineItemData {
     id: string
@@ -18,14 +17,15 @@ export interface ReviewSection {
 
 export interface ReviewData {
     sections: ReviewSection[]
-    selectedPlan?: BundleItem
+    selectedPlan?: PlanItem
+    planLabel?: string
     totalPrice: number
     totalOriginalPrice: number
 }
 
 export function deriveReviewData(steps: BundleStep[], selections: BundleSelections): ReviewData {
-    const quantitySteps = steps.filter((step) => step.selectionMode === 'quantity')
-    const planStep = steps.find((step) => step.selectionMode === 'single')
+    const quantitySteps = steps.filter((step): step is QuantityStep => step.selectionMode === 'quantity')
+    const planStep = steps.find((step): step is PlanStep => step.selectionMode === 'single')
     const selectedPlan = planStep?.items.find(
         (item) => (selections[planStep.id]?.[item.id] ?? 0) > 0
     )
@@ -62,5 +62,5 @@ export function deriveReviewData(steps: BundleStep[], selections: BundleSelectio
     const totalOriginalPrice =
         lineItemTotals.originalPrice + (selectedPlan ? selectedPlan.originalPrice ?? selectedPlan.price : 0)
 
-    return { sections, selectedPlan, totalPrice, totalOriginalPrice }
+    return { sections, selectedPlan, planLabel: planStep?.reviewLabel, totalPrice, totalOriginalPrice }
 }

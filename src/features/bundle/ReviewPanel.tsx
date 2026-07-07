@@ -13,7 +13,7 @@ interface ReviewPanelProps {
 
 export default function ReviewPanel({ selections, setQuantity }: ReviewPanelProps) {
     const bundleSteps = useBundleSteps()
-    const { sections, selectedPlan, totalPrice, totalOriginalPrice } = deriveReviewData(bundleSteps, selections)
+    const { sections, selectedPlan, planLabel, totalPrice, totalOriginalPrice } = deriveReviewData(bundleSteps, selections)
 
     return (
         <>
@@ -48,7 +48,8 @@ export default function ReviewPanel({ selections, setQuantity }: ReviewPanelProp
 
                 {selectedPlan && (
                     <PlanRow
-                        variant={selectedPlan.id === 'cam-unlimited' ? 'unlimited' : 'basic'}
+                        label={planLabel}
+                        planTier={selectedPlan.planTier}
                         price={selectedPlan.price}
                         originalPrice={selectedPlan.originalPrice}
                     />

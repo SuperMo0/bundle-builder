@@ -12,8 +12,5 @@ export interface BundleItem {
     image: string | null
     price: number
     originalPrice?: number
-    billingPeriod?: BillingPeriod
-    required?: boolean
     defaultQuantity?: number
-    colors?: ColorVariant[]
 }

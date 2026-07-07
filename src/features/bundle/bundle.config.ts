@@ -1,17 +1,37 @@
-import type { BundleItem } from "../../types"
-
-export type StepSelectionMode = 'quantity' | 'single'
+import type { BundleItem, BillingPeriod, ColorVariant } from "../../types"
 
 export type BundleSelections = Record<string, Record<string, number>>
 
-export interface BundleStep {
+export interface QuantityItem extends BundleItem {
+    required?: boolean
+    colors?: ColorVariant[]
+}
+
+export interface PlanItem extends BundleItem {
+    billingPeriod?: BillingPeriod
+    planTier?: string
+}
+
+export interface QuantityStep {
     id: string
     title: string
     icon: string
-    selectionMode: StepSelectionMode
+    selectionMode: 'quantity'
     reviewLabel?: string
-    items: BundleItem[]
+    items: QuantityItem[]
 }
+
+export interface PlanStep {
+    id: string
+    title: string
+    icon: string
+    selectionMode: 'single'
+    reviewLabel?: string
+    items: PlanItem[]
+}
+
+export type BundleStep = QuantityStep | PlanStep
+export type StepSelectionMode = BundleStep['selectionMode']
 
 export const bundleSteps: BundleStep[] = [
     {
@@ -86,7 +106,7 @@ export const bundleSteps: BundleStep[] = [
         title: 'Choose your plan',
         icon: '/plan.svg',
         selectionMode: 'single',
-        reviewLabel: "HOME MONITORING PLANE",
+        reviewLabel: "HOME MONITORING PLAN",
         items: [
             {
                 id: 'cam-basic',
@@ -95,6 +115,7 @@ export const bundleSteps: BundleStep[] = [
                 image: null,
                 price: 0,
                 billingPeriod: 'month',
+                planTier: 'Basic',
             },
             {
                 id: 'cam-unlimited',
@@ -105,6 +126,7 @@ export const bundleSteps: BundleStep[] = [
                 originalPrice: 12.99,
                 billingPeriod: 'month',
                 defaultQuantity: 1,
+                planTier: 'Unlimited',
             },
         ],
     },

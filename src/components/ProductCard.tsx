@@ -1,13 +1,18 @@
 import { useState } from 'react'
 import type { KeyboardEvent } from 'react'
-import type { BundleItem } from '../types'
+import type { BundleItem, ColorVariant } from '../types'
 import Stepper from './Stepper'
 import VariantPicker from './VariantPicker'
 import PriceDisplay from './PriceDisplay'
 import './ProductCard.css'
 
+export interface ProductCardItem extends BundleItem {
+    colors?: ColorVariant[]
+    required?: boolean
+}
+
 interface ProductCardProps {
-    bundleItem: BundleItem
+    bundleItem: ProductCardItem
     quantity: number
     onQuantityChange: (itemId: string, quantity: number) => void
 
