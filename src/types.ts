@@ -2,7 +2,6 @@ export type BillingPeriod = 'once' | 'month'
 
 export type SelectionMode = 'quantity' | 'single'
 
-/** Variant key used for items with no color options — a single implicit variant. */
 export const DEFAULT_VARIANT_KEY = 'default'
 
 export interface ColorVariant {
@@ -18,4 +17,14 @@ export interface BundleItem {
     price: number
     originalPrice?: number
     defaultQuantity?: number
+}
+
+export interface QuantityItem extends BundleItem {
+    required?: boolean
+    colors?: ColorVariant[]
+}
+
+export interface PlanItem extends BundleItem {
+    billingPeriod?: BillingPeriod
+    planTier?: string
 }

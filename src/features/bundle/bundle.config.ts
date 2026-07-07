@@ -1,17 +1,7 @@
-import type { BundleItem, BillingPeriod, ColorVariant } from "../../types"
+import type { QuantityItem, PlanItem } from "../../types"
 
 /** stepId -> itemId -> variantKey (color name, or DEFAULT_VARIANT_KEY) -> quantity */
 export type BundleSelections = Record<string, Record<string, Record<string, number>>>
-
-export interface QuantityItem extends BundleItem {
-    required?: boolean
-    colors?: ColorVariant[]
-}
-
-export interface PlanItem extends BundleItem {
-    billingPeriod?: BillingPeriod
-    planTier?: string
-}
 
 export interface QuantityStep {
     id: string

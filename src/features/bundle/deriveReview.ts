@@ -1,4 +1,5 @@
-import type { BundleStep, BundleSelections, QuantityStep, PlanStep, PlanItem } from './bundle.config'
+import type { BundleStep, BundleSelections, QuantityStep, PlanStep } from './bundle.config'
+import type { PlanItem } from '../../types'
 
 export interface ReviewLineItemData {
     id: string

@@ -1,19 +1,15 @@
 import { useState } from 'react'
 import type { ComponentProps } from 'react'
-import type { BundleItem, ColorVariant, SelectionMode } from '../types'
+import type { SelectionMode, QuantityItem } from '../types'
 import { DEFAULT_VARIANT_KEY } from '../types'
 import Stepper from './Stepper'
 import VariantPicker from './VariantPicker'
 import PriceDisplay from './PriceDisplay'
 import './ProductCard.css'
 
-export interface ProductCardItem extends BundleItem {
-    colors?: ColorVariant[]
-    required?: boolean
-}
 
 interface ProductCardProps extends ComponentProps<'div'> {
-    bundleItem: ProductCardItem
+    bundleItem: QuantityItem
     quantities: Record<string, number>
     onQuantityChange: (itemId: string, variantKey: string, quantity: number) => void
     min: number

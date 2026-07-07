@@ -1,12 +1,11 @@
 import { RadioGroup } from 'radix-ui'
-import type { SelectionMode } from '../types'
+import type { SelectionMode, QuantityItem, PlanItem } from '../types'
 import { DEFAULT_VARIANT_KEY } from '../types'
-import type { ProductCardItem } from './ProductCard'
 import ProductCard from './ProductCard'
 import './ProductGrid.css'
 
 interface ProductGridProps {
-    items: ProductCardItem[]
+    items: QuantityItem[] | PlanItem[]
     quantities: Record<string, Record<string, number>>
     onQuantityChange: (itemId: string, variantKey: string, quantity: number) => void
     getMinQuantity: (itemId: string) => number
