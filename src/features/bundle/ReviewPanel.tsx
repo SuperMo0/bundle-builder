@@ -1,18 +1,10 @@
 import { bundleSteps } from './bundle.config'
+import type { BundleSelections } from './bundle.config'
+import { deriveReviewData } from './deriveReview'
 import ReviewLineItem from '../../components/ReviewLineItem'
 import PlanRow from '../../components/PlanRow'
 import ReviewSummary from '../../components/ReviewSummary'
-import type { BundleSelections } from './bundle.config'
 import './ReviewPanel.css'
-
-interface ReviewLineItemData {
-    id: string
-    name: string
-    image: string | null
-    quantity: number
-    price: number
-    originalPrice?: number
-}
 
 interface ReviewPanelProps {
     selections: BundleSelections
@@ -20,43 +12,7 @@ interface ReviewPanelProps {
 }
 
 export default function ReviewPanel({ selections, setQuantity }: ReviewPanelProps) {
-    const quantitySteps = bundleSteps.filter((step) => step.selectionMode === 'quantity')
-    const planStep = bundleSteps.find((step) => step.selectionMode === 'single')
-    const selectedPlan = planStep?.items.find(
-        (item) => (selections[planStep.id]?.[item.id] ?? 0) > 0
-    )
-
-    const sections = quantitySteps.map((step) => {
-        const lineItems = step.items
-            .map((item): ReviewLineItemData | null => {
-                const quantity = selections[step.id]?.[item.id]
-                if (quantity === 0) return null
-
-                const price = item.price * quantity
-                const originalPrice = item.originalPrice !== undefined ? item.originalPrice * quantity : undefined
-
-                return { id: item.id, name: item.name, image: item.image, quantity, price, originalPrice }
-            })
-            .filter((lineItem) => lineItem !== null)
-
-        return { id: step.id, label: step.reviewLabel, lineItems }
-    })
-
-    const lineItemTotals = sections.reduce(
-        (totals, section) =>
-            section.lineItems.reduce(
-                (acc, lineItem) => ({
-                    price: acc.price + lineItem.price,
-                    originalPrice: acc.originalPrice + (lineItem.originalPrice ?? lineItem.price),
-                }),
-                totals
-            ),
-        { price: 0, originalPrice: 0 }
-    )
-
-    const totalPrice = lineItemTotals.price + (selectedPlan?.price ?? 0)
-    const totalOriginalPrice =
-        lineItemTotals.originalPrice + (selectedPlan ? selectedPlan.originalPrice ?? selectedPlan.price : 0)
+    const { sections, selectedPlan, totalPrice, totalOriginalPrice } = deriveReviewData(bundleSteps, selections)
 
     return (
         <>
@@ -90,13 +46,11 @@ export default function ReviewPanel({ selections, setQuantity }: ReviewPanelProp
                 )}
 
                 {selectedPlan && (
-                    <>
-                        <PlanRow
-                            variant={selectedPlan.id === 'cam-unlimited' ? 'unlimited' : 'basic'}
-                            price={selectedPlan.price}
-                            originalPrice={selectedPlan.originalPrice}
-                        />
-                    </>
+                    <PlanRow
+                        variant={selectedPlan.id === 'cam-unlimited' ? 'unlimited' : 'basic'}
+                        price={selectedPlan.price}
+                        originalPrice={selectedPlan.originalPrice}
+                    />
                 )}
 
                 <ReviewSummary totalPrice={totalPrice} totalOriginalPrice={totalOriginalPrice} />
