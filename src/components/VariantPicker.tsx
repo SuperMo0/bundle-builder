@@ -1,3 +1,4 @@
+import { RadioGroup } from 'radix-ui'
 import type { ColorVariant } from '../types'
 import './VariantPicker.css'
 
@@ -9,21 +10,15 @@ interface VariantPickerProps {
 
 export default function VariantPicker({ options, value, onChange }: VariantPickerProps) {
     return (
-        <div className="VariantPicker" role="radiogroup" aria-label="Color">
+        <RadioGroup.Root className="VariantPicker" aria-label="Color" value={value} onValueChange={onChange}>
             {options.map((option) => (
-                <button
-                    key={option.name}
-                    type="button"
-                    role="radio"
-                    aria-checked={option.name === value}
-                    className="VariantPicker-option"
-                    data-selected={option.name === value || undefined}
-                    onClick={() => onChange(option.name)}
-                >
-                    <img src={option.image} alt={option.name} className="VariantPicker-swatch" />
-                    {option.name}
-                </button>
+                <RadioGroup.Item key={option.name} value={option.name} asChild>
+                    <button type="button" className="VariantPicker-option">
+                        <img src={option.image} alt={option.name} className="VariantPicker-swatch" />
+                        {option.name}
+                    </button>
+                </RadioGroup.Item>
             ))}
-        </div>
+        </RadioGroup.Root>
     )
 }

@@ -20,7 +20,7 @@
    outline-offset: 2px;
 }
 
-.VariantPicker-option[data-selected] {
+.VariantPicker-option[data-state="checked"] {
   border-color: var(--color-text-success);
 }
 
