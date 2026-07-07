@@ -1,7 +1,7 @@
-import BundleAccordion from './BundleAccordion'
-import ReviewPanel from './ReviewPanel'
-import { useBundleSelection } from './useBundleSelection'
-import { useBundleSteps } from './useBundleSteps'
+import BundleAccordion from '../BundleAccordion/BundleAccordion'
+import ReviewPanel from '../ReviewPanel/ReviewPanel'
+import { useBundleSelection } from '../../hooks/useBundleSelection'
+import { useBundleSteps } from '../../hooks/useBundleSteps'
 import "./BundleBuilder.css"
 
 export default function BundleBuilder() {

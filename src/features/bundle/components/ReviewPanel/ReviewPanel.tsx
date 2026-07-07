@@ -1,9 +1,9 @@
-import { useBundleSteps } from './useBundleSteps'
-import type { BundleSelections } from './bundle.config'
-import { deriveReviewData } from './deriveReview'
-import ReviewLineItem from '../../components/ReviewLineItem/ReviewLineItem'
-import PlanRow from '../../components/PlanRow/PlanRow'
-import ReviewSummary from '../../components/ReviewSummary/ReviewSummary'
+import { useBundleSteps } from '../../hooks/useBundleSteps'
+import type { BundleSelections } from '../../bundle.config'
+import { deriveReviewData } from '../../deriveReview'
+import ReviewLineItem from '../../../../components/ReviewLineItem/ReviewLineItem'
+import PlanRow from '../../../../components/PlanRow/PlanRow'
+import ReviewSummary from '../../../../components/ReviewSummary/ReviewSummary'
 import './ReviewPanel.css'
 
 interface ReviewPanelProps {

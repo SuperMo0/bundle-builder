@@ -1,7 +1,7 @@
 import { produce } from 'immer'
 import { useState } from 'react'
-import { DEFAULT_VARIANT_KEY } from '../../types'
-import type { BundleStep, BundleSelections } from './bundle.config'
+import { DEFAULT_VARIANT_KEY } from '../../../types'
+import type { BundleStep, BundleSelections } from '../bundle.config'
 
 const STORAGE_KEY = 'bundle-builder:selections'
 

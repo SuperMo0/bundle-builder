@@ -1,4 +1,4 @@
-import BundleBuilder from "../features/bundle/BundleBuilder";
+import BundleBuilder from "../features/bundle/components/BundleBuilder/BundleBuilder";
 import './BundleBuilderPage.css'
 
 export default function BundleBuilderPage() {

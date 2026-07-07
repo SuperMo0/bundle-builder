@@ -1,4 +1,4 @@
-import { bundleSteps } from './bundle.config'
+import { bundleSteps } from '../bundle.config'
 
 // todo: migrate to react-query
 export function useBundleSteps() {
