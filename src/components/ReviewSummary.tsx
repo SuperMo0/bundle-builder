@@ -1,17 +1,28 @@
+import { useState } from 'react'
 import './ReviewSummary.css'
 import PriceDisplay from './PriceDisplay'
 
 interface ReviewSummaryProps {
     totalPrice: number
     totalOriginalPrice: number
+    onSave: () => void
 }
 
 function formatPrice(price: number) {
     return `$${price.toFixed(2)}`
 }
 
-export default function ReviewSummary({ totalPrice, totalOriginalPrice }: ReviewSummaryProps) {
+const SAVED_MESSAGE_DURATION_MS = 2000
+
+export default function ReviewSummary({ totalPrice, totalOriginalPrice, onSave }: ReviewSummaryProps) {
     const savings = totalOriginalPrice - totalPrice
+    const [justSaved, setJustSaved] = useState(false)
+
+    const handleSave = () => {
+        onSave()
+        setJustSaved(true)
+        setTimeout(() => setJustSaved(false), SAVED_MESSAGE_DURATION_MS)
+    }
 
     return (
         <div className="ReviewSummary">
@@ -43,9 +54,9 @@ export default function ReviewSummary({ totalPrice, totalOriginalPrice }: Review
                 Checkout
             </button>
 
-            <a href="#" className="ReviewSummary-save-for-later">
-                Save my system for later
-            </a>
+            <button type="button" className="ReviewSummary-save-for-later" onClick={handleSave}>
+                {justSaved ? 'Saved!' : 'Save my system for later'}
+            </button>
         </div>
     )
 }

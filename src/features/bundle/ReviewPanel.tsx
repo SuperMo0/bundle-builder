@@ -10,9 +10,10 @@ interface ReviewPanelProps {
     selections: BundleSelections
     setQuantity: (stepId: string, itemId: string, variantKey: string, qty: number) => void
     getMinQuantity: (stepId: string, itemId: string) => number
+    saveSnapshot: () => void
 }
 
-export default function ReviewPanel({ selections, setQuantity, getMinQuantity }: ReviewPanelProps) {
+export default function ReviewPanel({ selections, setQuantity, getMinQuantity, saveSnapshot }: ReviewPanelProps) {
     const bundleSteps = useBundleSteps()
     const { sections, selectedPlan, planLabel, totalPrice, totalOriginalPrice } = deriveReviewData(bundleSteps, selections)
 
@@ -63,7 +64,11 @@ export default function ReviewPanel({ selections, setQuantity, getMinQuantity }:
                     </>
                 )}
 
-                <ReviewSummary totalPrice={totalPrice} totalOriginalPrice={totalOriginalPrice} />
+                <ReviewSummary
+                    totalPrice={totalPrice}
+                    totalOriginalPrice={totalOriginalPrice}
+                    onSave={saveSnapshot}
+                />
             </div>
         </>
     )

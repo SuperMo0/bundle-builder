@@ -3,6 +3,17 @@ import { useState } from 'react'
 import { DEFAULT_VARIANT_KEY } from '../../types'
 import type { BundleStep, BundleSelections } from './bundle.config'
 
+const STORAGE_KEY = 'bundle-builder:selections'
+
+function loadPersistedSelections(): BundleSelections | null {
+    try {
+        const raw = localStorage.getItem(STORAGE_KEY)
+        return raw ? (JSON.parse(raw) as BundleSelections) : null
+    } catch {
+        return null
+    }
+}
+
 function minQuantityForItem(steps: BundleStep[], stepId: string, itemId: string): number {
     const item = steps.find((s) => s.id === stepId)?.items.find((i) => i.id === itemId)
     const isRequired = !!item && 'required' in item && item.required
@@ -26,7 +37,9 @@ function createInitialSelections(steps: BundleStep[]): BundleSelections {
 }
 export function useBundleSelection(steps: BundleStep[]) {
 
-    const [selections, setSelections] = useState<BundleSelections>(() => createInitialSelections(steps))
+    const [selections, setSelections] = useState<BundleSelections>(
+        () => loadPersistedSelections() ?? createInitialSelections(steps)
+    )
 
     const setQuantity = (stepId: string, itemId: string, variantKey: string, qty: number) => {
         const step = steps.find((s) => s.id === stepId)
@@ -56,5 +69,9 @@ export function useBundleSelection(steps: BundleStep[]) {
 
     const getMinQuantity = (stepId: string, itemId: string) => minQuantityForItem(steps, stepId, itemId)
 
-    return { selections, setQuantity, getSelectedCount, getMinQuantity }
+    const saveSnapshot = () => {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(selections))
+    }
+
+    return { selections, setQuantity, getSelectedCount, getMinQuantity, saveSnapshot }
 }
