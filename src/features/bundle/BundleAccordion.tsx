@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { bundleSteps } from './bundle.config'
 import { StepAccordion, StepAccordionItem } from '../../components/StepAccordion'
 import ProductGrid from '../../components/ProductGrid';
@@ -9,26 +10,33 @@ interface BundleAccordion {
     getSelectedCount: (stepId: string) => number;
 }
 export default function BundleAccordion({ selections, setQuantity, getSelectedCount }: BundleAccordion) {
+    const [activeStep, setActiveStep] = useState(bundleSteps[0].id)
 
     return (
-        <StepAccordion>
-            {bundleSteps.map((step, index) => (
-                <StepAccordionItem key={step.id}
-                    value={step.id}
-                    stepNumber={index + 1}
-                    totalSteps={bundleSteps.length}
-                    icon={step.icon}
-                    title={step.title}
-                    selectedLabel={`${getSelectedCount(step.id)} selected`}>
-                    <ProductGrid
-                        key={step.id}
-                        items={step.items}
-                        quantities={selections[step.id]}
-                        onQuantityChange={(itemId, quantity) => { setQuantity(step.id, itemId, quantity) }}
-                        selectionMode={step.selectionMode}
-                    />
-                </StepAccordionItem>
-            ))}
+        <StepAccordion value={activeStep} onValueChange={setActiveStep}>
+            {bundleSteps.map((step, index) => {
+                const nextStep = bundleSteps[index + 1]
+
+                return (
+                    <StepAccordionItem key={step.id}
+                        value={step.id}
+                        stepNumber={index + 1}
+                        totalSteps={bundleSteps.length}
+                        icon={step.icon}
+                        title={step.title}
+                        selectedLabel={`${getSelectedCount(step.id)} selected`}
+                        nextTitle={nextStep?.title}
+                        onNext={nextStep ? () => setActiveStep(nextStep.id) : undefined}>
+                        <ProductGrid
+                            key={step.id}
+                            items={step.items}
+                            quantities={selections[step.id]}
+                            onQuantityChange={(itemId, quantity) => { setQuantity(step.id, itemId, quantity) }}
+                            selectionMode={step.selectionMode}
+                        />
+                    </StepAccordionItem>
+                )
+            })}
         </StepAccordion>
     )
 }

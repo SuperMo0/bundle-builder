@@ -10,6 +10,8 @@ interface StepAccordionItemProps {
     icon: string
     title: string
     selectedLabel: string
+    nextTitle?: string
+    onNext?: () => void
     children?: ReactNode
 }
 
@@ -20,6 +22,8 @@ export function StepAccordionItem({
     icon,
     title,
     selectedLabel,
+    nextTitle,
+    onNext,
     children,
 }: StepAccordionItemProps) {
     return (
@@ -40,15 +44,28 @@ export function StepAccordionItem({
                 </Accordion.Trigger>
             </Accordion.Header>
             <Accordion.Content className="AccordionContent">
-                {children}
+                <div className="StepAccordion-panel">
+                    {children}
+                    {onNext && (
+                        <button type="button" className="StepAccordion-next" onClick={onNext}>
+                            Next: {nextTitle}
+                        </button>
+                    )}
+                </div>
             </Accordion.Content>
         </Accordion.Item>
     )
 }
 
-export function StepAccordion({ children }: { children: ReactNode }) {
+interface StepAccordionProps {
+    value: string
+    onValueChange: (value: string) => void
+    children: ReactNode
+}
+
+export function StepAccordion({ value, onValueChange, children }: StepAccordionProps) {
     return (
-        <Accordion.Root type="single" collapsible defaultValue="cameras">
+        <Accordion.Root type="single" collapsible value={value} onValueChange={onValueChange}>
             {children}
         </Accordion.Root>
     )
