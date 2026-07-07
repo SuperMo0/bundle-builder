@@ -25,6 +25,7 @@ export default function BundleAccordion({ selections, setQuantity, getSelectedCo
                         items={step.items}
                         quantities={selections[step.id]}
                         onQuantityChange={(itemId, quantity) => { setQuantity(step.id, itemId, quantity) }}
+                        selectionMode={step.selectionMode}
                     />
                 </StepAccordionItem>
             ))}

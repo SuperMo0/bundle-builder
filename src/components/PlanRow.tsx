@@ -1,4 +1,5 @@
 import './PlanRow.css'
+import PlanImage from './PlanImage'
 
 interface PlanRowProps {
     variant: 'basic' | 'unlimited'
@@ -17,12 +18,7 @@ export default function PlanRow({ variant, price, originalPrice }: PlanRowProps)
         <div className="PlanRow">
             <span className="ReviewPanel-section-label">HOME MONITORING PLANE</span>
             <div className='PlaneLineItem'>
-                <div className='PlaneImage'>
-                    <img src="/wyze-icon.svg" alt="" className="PlanRow-icon" />
-                    <p className="PlanRow-name">
-                        Cam <span className="PlanRow-variant">{planLabel}</span>
-                    </p>
-                </div>
+                <PlanImage variantLabel={planLabel} />
                 <div className="ReviewLineItem-price">
                     {originalPrice !== undefined && (
                         <span className="PlanRow-price-original">{formatPrice(originalPrice)}/mo</span>

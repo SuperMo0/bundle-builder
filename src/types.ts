@@ -9,7 +9,7 @@ export interface BundleItem {
     id: string
     name: string
     description: string
-    image: string
+    image: string | null
     price: number
     originalPrice?: number
     billingPeriod?: BillingPeriod

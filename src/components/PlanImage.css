@@ -1,0 +1,20 @@
+.PlaneImage {
+  display: flex;
+  align-items: center;
+}
+
+.PlanRow-icon {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+
+.PlanRow-name {
+  margin: 0;
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-title-review);
+}
+
+.PlanRow-variant {
+  color: var(--color-text-interactive);
+}

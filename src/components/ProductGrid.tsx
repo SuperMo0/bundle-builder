@@ -6,9 +6,11 @@ interface ProductGridProps {
     items: BundleItem[]
     quantities: Record<string, number>
     onQuantityChange: (itemId: string, quantity: number) => void
+
+    selectionMode: 'quantity' | 'single'
 }
 
-export default function ProductGrid({ items, quantities, onQuantityChange }: ProductGridProps) {
+export default function ProductGrid({ items, quantities, onQuantityChange, selectionMode }: ProductGridProps) {
     return (
         <div className="ProductGrid">
             {items.map((item) => (
@@ -17,6 +19,7 @@ export default function ProductGrid({ items, quantities, onQuantityChange }: Pro
                     bundleItem={item}
                     quantity={quantities[item.id] ?? 0}
                     onQuantityChange={onQuantityChange}
+                    selectionMode={selectionMode}
                 />
             ))}
         </div>

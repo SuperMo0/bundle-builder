@@ -17,6 +17,7 @@
   gap: var(--space-1);
   align-self: start;
   width:100%;
+  padding-top: var(--space-6);
 }
 
 .ProductCard-content {
@@ -33,6 +34,9 @@
   color: var(--color-button-foreground);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
+  position: absolute;
+  top: var(--space-2);
+  left:var(--space-2);
 }
 
 .ProductCard-image {

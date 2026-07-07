@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import type { KeyboardEvent } from 'react'
 import type { BundleItem } from '../types'
 import Stepper from './Stepper'
 import VariantPicker from './VariantPicker'
@@ -8,29 +9,52 @@ interface ProductCardProps {
     bundleItem: BundleItem
     quantity: number
     onQuantityChange: (itemId: string, quantity: number) => void
+
+    selectionMode: 'quantity' | 'single'
 }
 
 function formatPrice(price: number) {
     return price === 0 ? 'FREE' : `$${price.toFixed(2)}`
 }
 
-export default function ProductCard({ bundleItem, quantity, onQuantityChange }: ProductCardProps) {
+export default function ProductCard({ bundleItem, quantity, onQuantityChange, selectionMode }: ProductCardProps) {
     const { id, name, description, image, price, originalPrice, colors, required } = bundleItem
     const [selectedColor, setSelectedColor] = useState(colors?.[0]?.name)
+    const isSingleSelect = selectionMode === 'single'
 
     const hasDiscount = originalPrice !== undefined && originalPrice > price
     const savingsPercent = hasDiscount
         ? Math.round((1 - price / originalPrice) * 100)
         : null
 
+    const select = () => onQuantityChange(id, 1)
+
+    const singleSelectProps = isSingleSelect
+        ? {
+            role: 'radio' as const,
+            'aria-checked': quantity > 0,
+            tabIndex: 0,
+            onClick: select,
+            onKeyDown: (e: KeyboardEvent) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault()
+                    select()
+                }
+            },
+        }
+        : {}
+
     return (
-        <div className="ProductCard" data-selected={quantity > 0 || undefined}
+        <div
+            className="ProductCard"
+            data-selected={quantity > 0 || undefined}
+            {...singleSelectProps}
         >
             <div className="ProductCard-media">
                 {savingsPercent !== null && (
                     <span className="ProductCard-badge">Save {savingsPercent}%</span>
                 )}
-                <img src={image} alt={name} className="ProductCard-image" />
+                <img src={image || "/wyze-icon.svg"} alt={name} className="ProductCard-image" />
             </div>
 
             <div className="ProductCard-content">
@@ -47,11 +71,14 @@ export default function ProductCard({ bundleItem, quantity, onQuantityChange }: 
                     )}
 
                     <div className="ProductCard-controls">
-                        <Stepper
-                            quantity={quantity}
-                            onChange={(qty) => onQuantityChange(id, qty)}
-                            min={required ? 1 : 0}
-                        />
+
+                        {selectionMode === 'quantity' && (
+                            <Stepper
+                                quantity={quantity}
+                                onChange={(qty) => onQuantityChange(id, qty)}
+                                min={required ? 1 : 0}
+                            />
+                        )}
 
                         <div className="ProductCard-price">
                             {hasDiscount && (
