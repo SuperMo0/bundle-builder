@@ -119,6 +119,8 @@ export const bundleSteps: BundleStep[] = [
                 description: 'Detects motion up to 30 feet away and alerts you instantly.',
                 image: '/products/wyze-sense-motion-sensor.png',
                 price: 29.99,
+                defaultQuantity: 2,
+
             },
             {
                 id: 'wyze-sense-hub',
