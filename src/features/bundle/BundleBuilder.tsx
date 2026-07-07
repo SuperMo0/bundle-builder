@@ -6,7 +6,7 @@ import "./BundleBuilder.css"
 
 export default function BundleBuilder() {
     const steps = useBundleSteps()
-    const { selections, getSelectedCount, setQuantity } = useBundleSelection(steps)
+    const { selections, getSelectedCount, setQuantity, getMinQuantity } = useBundleSelection(steps)
 
     return (
         <div className="BundleBuilder">
@@ -15,12 +15,13 @@ export default function BundleBuilder() {
                     selections={selections}
                     getSelectedCount={getSelectedCount}
                     setQuantity={setQuantity}
+                    getMinQuantity={getMinQuantity}
                 />
             </section>
 
             <section className="BundleBuilder-review">
                 <div className="BundleBuilder-review-inner">
-                    <ReviewPanel selections={selections} setQuantity={setQuantity} />
+                    <ReviewPanel selections={selections} setQuantity={setQuantity} getMinQuantity={getMinQuantity} />
                 </div>
             </section>
         </div>

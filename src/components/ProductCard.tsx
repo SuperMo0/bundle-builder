@@ -16,6 +16,7 @@ interface ProductCardProps extends ComponentProps<'div'> {
     bundleItem: ProductCardItem
     quantities: Record<string, number>
     onQuantityChange: (itemId: string, variantKey: string, quantity: number) => void
+    min: number
 
     selectionMode: SelectionMode
 }
@@ -24,11 +25,12 @@ export default function ProductCard({
     bundleItem,
     quantities,
     onQuantityChange,
+    min,
     selectionMode,
     ref,
     ...radioProps
 }: ProductCardProps) {
-    const { id, name, description, image, price, originalPrice, colors, required } = bundleItem
+    const { id, name, description, image, price, originalPrice, colors } = bundleItem
     const [selectedColor, setSelectedColor] = useState(colors?.[0]?.name)
 
     const variantKey = selectedColor ?? DEFAULT_VARIANT_KEY
@@ -72,7 +74,7 @@ export default function ProductCard({
                             <Stepper
                                 quantity={quantity}
                                 onChange={(qty) => onQuantityChange(id, variantKey, qty)}
-                                min={required ? 1 : 0}
+                                min={min}
                             />
                         )}
                         <PriceDisplay price={price} originalPrice={originalPrice} variant="card" />

@@ -9,8 +9,9 @@ interface BundleAccordionProps {
     selections: BundleSelections;
     setQuantity: (stepId: string, itemId: string, variantKey: string, qty: number) => void;
     getSelectedCount: (stepId: string) => number;
+    getMinQuantity: (stepId: string, itemId: string) => number;
 }
-export default function BundleAccordion({ selections, setQuantity, getSelectedCount }: BundleAccordionProps) {
+export default function BundleAccordion({ selections, setQuantity, getSelectedCount, getMinQuantity }: BundleAccordionProps) {
     const bundleSteps = useBundleSteps()
     const [activeStep, setActiveStep] = useState(bundleSteps[0].id)
 
@@ -34,6 +35,7 @@ export default function BundleAccordion({ selections, setQuantity, getSelectedCo
                             items={step.items}
                             quantities={selections[step.id]}
                             onQuantityChange={(itemId, variantKey, quantity) => { setQuantity(step.id, itemId, variantKey, quantity) }}
+                            getMinQuantity={(itemId) => getMinQuantity(step.id, itemId)}
                             selectionMode={step.selectionMode}
                         />
                     </StepAccordionItem>

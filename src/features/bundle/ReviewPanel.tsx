@@ -9,9 +9,10 @@ import './ReviewPanel.css'
 interface ReviewPanelProps {
     selections: BundleSelections
     setQuantity: (stepId: string, itemId: string, variantKey: string, qty: number) => void
+    getMinQuantity: (stepId: string, itemId: string) => number
 }
 
-export default function ReviewPanel({ selections, setQuantity }: ReviewPanelProps) {
+export default function ReviewPanel({ selections, setQuantity, getMinQuantity }: ReviewPanelProps) {
     const bundleSteps = useBundleSteps()
     const { sections, selectedPlan, planLabel, totalPrice, totalOriginalPrice } = deriveReviewData(bundleSteps, selections)
 
@@ -39,6 +40,7 @@ export default function ReviewPanel({ selections, setQuantity }: ReviewPanelProp
                                         quantity={lineItem.quantity}
                                         price={lineItem.price}
                                         originalPrice={lineItem.originalPrice}
+                                        min={getMinQuantity(section.id, lineItem.itemId)}
                                         onQuantityChange={(qty) =>
                                             setQuantity(section.id, lineItem.itemId, lineItem.variantKey, qty)
                                         }

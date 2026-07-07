@@ -9,11 +9,12 @@ interface ProductGridProps {
     items: ProductCardItem[]
     quantities: Record<string, Record<string, number>>
     onQuantityChange: (itemId: string, variantKey: string, quantity: number) => void
+    getMinQuantity: (itemId: string) => number
 
     selectionMode: SelectionMode
 }
 
-export default function ProductGrid({ items, quantities, onQuantityChange, selectionMode }: ProductGridProps) {
+export default function ProductGrid({ items, quantities, onQuantityChange, getMinQuantity, selectionMode }: ProductGridProps) {
     if (selectionMode === 'single') {
         const selectedId = items.find((item) =>
             Object.values(quantities[item.id] ?? {}).some((qty) => qty > 0)
@@ -31,6 +32,7 @@ export default function ProductGrid({ items, quantities, onQuantityChange, selec
                             bundleItem={item}
                             quantities={quantities[item.id] ?? {}}
                             onQuantityChange={onQuantityChange}
+                            min={getMinQuantity(item.id)}
                             selectionMode={selectionMode}
                         />
                     </RadioGroup.Item>
@@ -47,6 +49,7 @@ export default function ProductGrid({ items, quantities, onQuantityChange, selec
                     bundleItem={item}
                     quantities={quantities[item.id] ?? {}}
                     onQuantityChange={onQuantityChange}
+                    min={getMinQuantity(item.id)}
                     selectionMode={selectionMode}
                 />
             ))}

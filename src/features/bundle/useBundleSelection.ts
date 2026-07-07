@@ -3,6 +3,11 @@ import { useState } from 'react'
 import { DEFAULT_VARIANT_KEY } from '../../types'
 import type { BundleStep, BundleSelections } from './bundle.config'
 
+function minQuantityForItem(steps: BundleStep[], stepId: string, itemId: string): number {
+    const item = steps.find((s) => s.id === stepId)?.items.find((i) => i.id === itemId)
+    const isRequired = !!item && 'required' in item && item.required
+    return isRequired ? 1 : 0
+}
 
 function createInitialSelections(steps: BundleStep[]): BundleSelections {
     return Object.fromEntries(
@@ -10,8 +15,7 @@ function createInitialSelections(steps: BundleStep[]): BundleSelections {
             step.id,
             Object.fromEntries(
                 step.items.map((item) => {
-                    const isRequired = 'required' in item && item.required
-                    const defaultQty = item.defaultQuantity ?? (isRequired ? 1 : 0)
+                    const defaultQty = item.defaultQuantity ?? minQuantityForItem(steps, step.id, item.id)
                     const defaultVariantKey =
                         'colors' in item && item.colors?.length ? item.colors[0].name : DEFAULT_VARIANT_KEY
                     return [item.id, { [defaultVariantKey]: defaultQty }]
@@ -26,10 +30,7 @@ export function useBundleSelection(steps: BundleStep[]) {
 
     const setQuantity = (stepId: string, itemId: string, variantKey: string, qty: number) => {
         const step = steps.find((s) => s.id === stepId)
-        const item = step?.items.find((i) => i.id === itemId)
-        const isRequired = !!item && 'required' in item && item.required
-        const minQty = isRequired ? 1 : 0
-        const nextQty = Math.max(minQty, qty)
+        const nextQty = Math.max(minQuantityForItem(steps, stepId, itemId), qty)
 
         setSelections(
             produce((draft) => {
@@ -53,5 +54,7 @@ export function useBundleSelection(steps: BundleStep[]) {
             .flatMap((variantQuantities) => Object.values(variantQuantities))
             .filter((qty) => qty > 0).length
 
-    return { selections, setQuantity, getSelectedCount }
+    const getMinQuantity = (stepId: string, itemId: string) => minQuantityForItem(steps, stepId, itemId)
+
+    return { selections, setQuantity, getSelectedCount, getMinQuantity }
 }
