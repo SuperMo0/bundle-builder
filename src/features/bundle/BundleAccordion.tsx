@@ -5,12 +5,12 @@ import ProductGrid from '../../components/ProductGrid';
 import type { BundleSelections } from './bundle.config'
 
 
-interface BundleAccordion {
+interface BundleAccordionProps {
     selections: BundleSelections;
     setQuantity: (stepId: string, itemId: string, qty: number) => void;
     getSelectedCount: (stepId: string) => number;
 }
-export default function BundleAccordion({ selections, setQuantity, getSelectedCount }: BundleAccordion) {
+export default function BundleAccordion({ selections, setQuantity, getSelectedCount }: BundleAccordionProps) {
     const bundleSteps = useBundleSteps()
     const [activeStep, setActiveStep] = useState(bundleSteps[0].id)
 
