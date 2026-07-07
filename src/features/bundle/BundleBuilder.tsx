@@ -1,11 +1,12 @@
 import BundleAccordion from './BundleAccordion'
 import ReviewPanel from './ReviewPanel'
 import { useBundleSelection } from './useBundleSelection'
-import { bundleSteps } from './bundle.config'
+import { useBundleSteps } from './useBundleSteps'
 import "./BundleBuilder.css"
 
 export default function BundleBuilder() {
-    const { selections, getSelectedCount, setQuantity } = useBundleSelection(bundleSteps)
+    const steps = useBundleSteps()
+    const { selections, getSelectedCount, setQuantity } = useBundleSelection(steps)
 
     return (
         <div className="BundleBuilder">

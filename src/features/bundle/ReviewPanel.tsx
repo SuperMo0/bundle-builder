@@ -1,4 +1,4 @@
-import { bundleSteps } from './bundle.config'
+import { useBundleSteps } from './useBundleSteps'
 import type { BundleSelections } from './bundle.config'
 import { deriveReviewData } from './deriveReview'
 import ReviewLineItem from '../../components/ReviewLineItem'
@@ -12,6 +12,7 @@ interface ReviewPanelProps {
 }
 
 export default function ReviewPanel({ selections, setQuantity }: ReviewPanelProps) {
+    const bundleSteps = useBundleSteps()
     const { sections, selectedPlan, totalPrice, totalOriginalPrice } = deriveReviewData(bundleSteps, selections)
 
     return (

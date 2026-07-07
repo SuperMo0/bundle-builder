@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { bundleSteps } from './bundle.config'
+import { useBundleSteps } from './useBundleSteps'
 import { StepAccordion, StepAccordionItem } from '../../components/StepAccordion'
 import ProductGrid from '../../components/ProductGrid';
 import type { BundleSelections } from './bundle.config'
@@ -11,6 +11,7 @@ interface BundleAccordion {
     getSelectedCount: (stepId: string) => number;
 }
 export default function BundleAccordion({ selections, setQuantity, getSelectedCount }: BundleAccordion) {
+    const bundleSteps = useBundleSteps()
     const [activeStep, setActiveStep] = useState(bundleSteps[0].id)
 
     return (
