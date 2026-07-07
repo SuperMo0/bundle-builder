@@ -7,7 +7,7 @@ import './ReviewPanel.css'
 interface ReviewLineItemData {
     id: string
     name: string
-    image: string
+    image: string | null
     quantity: number
     price: number
     originalPrice?: number

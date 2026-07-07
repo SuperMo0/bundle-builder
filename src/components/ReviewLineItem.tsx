@@ -3,7 +3,7 @@ import './ReviewLineItem.css'
 
 interface ReviewLineItemProps {
     name: string
-    image: string
+    image: string | null
     quantity: number
     price: number
     originalPrice?: number
@@ -24,7 +24,7 @@ export default function ReviewLineItem({
 }: ReviewLineItemProps) {
     return (
         <div className="ReviewLineItem">
-            <img src={image} alt={name} className="ReviewLineItem-image" />
+            <img src={image || "/wyze-icon.svg"} alt={name} className="ReviewLineItem-image" />
             <p className="ReviewLineItem-name">{name}</p>
             <Stepper quantity={quantity} onChange={onQuantityChange} />
             <div className="ReviewLineItem-price">
