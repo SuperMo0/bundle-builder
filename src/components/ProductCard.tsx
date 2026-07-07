@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { KeyboardEvent } from 'react'
+import type { ComponentProps } from 'react'
 import type { BundleItem, ColorVariant, SelectionMode } from '../types'
 import Stepper from './Stepper'
 import VariantPicker from './VariantPicker'
@@ -11,7 +11,7 @@ export interface ProductCardItem extends BundleItem {
     required?: boolean
 }
 
-interface ProductCardProps {
+interface ProductCardProps extends ComponentProps<'div'> {
     bundleItem: ProductCardItem
     quantity: number
     onQuantityChange: (itemId: string, quantity: number) => void
@@ -19,39 +19,28 @@ interface ProductCardProps {
     selectionMode: SelectionMode
 }
 
-
-export default function ProductCard({ bundleItem, quantity, onQuantityChange, selectionMode }: ProductCardProps) {
+export default function ProductCard({
+    bundleItem,
+    quantity,
+    onQuantityChange,
+    selectionMode,
+    ref,
+    ...radioProps
+}: ProductCardProps) {
     const { id, name, description, image, price, originalPrice, colors, required } = bundleItem
     const [selectedColor, setSelectedColor] = useState(colors?.[0]?.name)
-    const isSingleSelect = selectionMode === 'single'
 
     const hasDiscount = originalPrice !== undefined && originalPrice > price
     const savingsPercent = hasDiscount
         ? Math.round((1 - price / originalPrice) * 100)
         : null
 
-    const select = () => onQuantityChange(id, 1)
-
-    const singleSelectProps = isSingleSelect
-        ? {
-            role: 'radio' as const,
-            'aria-checked': quantity > 0,
-            tabIndex: 0,
-            onClick: select,
-            onKeyDown: (e: KeyboardEvent) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault()
-                    select()
-                }
-            },
-        }
-        : {}
-
     return (
         <div
+            {...radioProps}
+            ref={ref}
             className="ProductCard"
             data-selected={quantity > 0 || undefined}
-            {...singleSelectProps}
         >
             <div className="ProductCard-media">
                 {savingsPercent !== null && (
@@ -74,7 +63,6 @@ export default function ProductCard({ bundleItem, quantity, onQuantityChange, se
                     )}
 
                     <div className="ProductCard-controls">
-
                         {selectionMode === 'quantity' && (
                             <Stepper
                                 quantity={quantity}
@@ -85,9 +73,7 @@ export default function ProductCard({ bundleItem, quantity, onQuantityChange, se
                         <PriceDisplay price={price} originalPrice={originalPrice} variant="card" />
                     </div>
                 </div>
-
             </div>
-        </div >
-
+        </div>
     )
 }
