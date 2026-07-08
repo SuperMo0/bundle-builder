@@ -28,11 +28,12 @@ export default function BundleAccordion({ selections, setQuantity, getSelectedCo
         const activeItem = itemRefs.current.get(activeStep)
         if (!activeItem) return
 
-        const scrollActiveItemIntoView = () => {
+        const scrollActiveItemIntoView = (event: AnimationEvent) => {
+            if (event.animationName !== 'accordion-slide-down') return
             activeItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }
 
-        activeItem.addEventListener('animationend', scrollActiveItemIntoView, { once: true })
+        activeItem.addEventListener('animationend', scrollActiveItemIntoView)
         return () => activeItem.removeEventListener('animationend', scrollActiveItemIntoView)
     }, [activeStep])
 
