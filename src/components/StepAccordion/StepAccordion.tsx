@@ -1,5 +1,4 @@
 import { Accordion } from 'radix-ui'
-import { ChevronDownIcon } from '@radix-ui/react-icons'
 import type { ReactNode } from 'react'
 import { publicAsset } from '../../lib/publicAsset'
 import './StepAccordion.css'
@@ -39,7 +38,7 @@ export function StepAccordionItem({
                         <span className="StepAccordion-title">{title}</span>
                         <span className="StepAccordion-meta">
                             <span aria-live="polite">{selectedLabel}</span>
-                            <ChevronDownIcon className="AccordionChevron" aria-hidden />
+                            <img src={publicAsset('/icons/carrot-up.svg')} className="AccordionChevron" aria-hidden alt="Chevron"></img>
                         </span>
                     </span>
                 </Accordion.Trigger>
