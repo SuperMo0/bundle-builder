@@ -1,5 +1,6 @@
 import { RadioGroup } from 'radix-ui'
 import type { ColorVariant } from '../../types'
+import { publicAsset } from '../../lib/publicAsset'
 import './VariantPicker.css'
 
 interface VariantPickerProps {
@@ -14,7 +15,7 @@ export default function VariantPicker({ options, value, onChange }: VariantPicke
             {options.map((option) => (
                 <RadioGroup.Item key={option.name} value={option.name} asChild>
                     <button type="button" className="VariantPicker-option">
-                        <img src={option.image} alt={option.name} className="VariantPicker-swatch" />
+                        <img src={publicAsset(option.image)} alt={option.name} className="VariantPicker-swatch" />
                         {option.name}
                     </button>
                 </RadioGroup.Item>

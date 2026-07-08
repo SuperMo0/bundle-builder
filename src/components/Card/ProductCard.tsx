@@ -4,6 +4,7 @@ import { DEFAULT_VARIANT_KEY } from '../../types'
 import Stepper from '../Stepper/Stepper'
 import VariantPicker from '../VariantPicker/VariantPicker'
 import PriceDisplay from '../PriceDisplay/PriceDisplay'
+import { publicAsset } from '../../lib/publicAsset'
 import './Card.css'
 
 
@@ -33,7 +34,7 @@ export default function ProductCard({ bundleItem, quantities, onQuantityChange, 
                 {savingsPercent !== null && (
                     <span className="ProductCard-badge">Save {savingsPercent}%</span>
                 )}
-                <img src={image || "/icons/product-placeholder.svg"} alt={name} className="ProductCard-image" />
+                <img src={publicAsset(image || "/icons/product-placeholder.svg")} alt={name} className="ProductCard-image" />
             </div>
 
             <div className="ProductCard-content">

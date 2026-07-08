@@ -27,6 +27,9 @@ jobs:
 
       - run: npm ci
 
+      - name: Build app
+        run: npm run build
+
       - name: Build Storybook
         run: npm run build-storybook
 
@@ -35,8 +38,9 @@ jobs:
 
       - name: Assemble site
         run: |
-          mkdir -p site/coverage
-          cp -r storybook-static/. site/
+          mkdir -p site/storybook site/coverage
+          cp -r dist/. site/
+          cp -r storybook-static/. site/storybook/
           cp -r coverage/. site/coverage/
 
       - name: Setup Pages

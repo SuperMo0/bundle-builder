@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './ReviewSummary.css'
 import PriceDisplay from '../PriceDisplay/PriceDisplay'
+import { publicAsset } from '../../lib/publicAsset'
 
 interface ReviewSummaryProps {
     totalPrice: number
@@ -27,14 +28,14 @@ export default function ReviewSummary({ totalPrice, totalOriginalPrice, onSave }
     return (
         <div className="ReviewSummary">
             <div className="ReviewSummary-shipping">
-                <img src="/icons/shipping.svg" alt="" className="ReviewSummary-shipping-icon" />
+                <img src={publicAsset("/icons/shipping.svg")} alt="" className="ReviewSummary-shipping-icon" />
                 <p className="ReviewSummary-shipping-label">Fast Shipping</p>
                 <PriceDisplay price={0} originalPrice={5.99} variant="line" />
             </div>
 
             <div className="ReviewSummary-total">
                 <img
-                    src="/icons/satisfaction-badge.png"
+                    src={publicAsset("/icons/satisfaction-badge.png")}
                     alt="100% satisfaction guarantee"
                     className="ReviewSummary-badge"
                 />
