@@ -37,7 +37,7 @@ export function StepAccordionItem({
                         <img src={icon} className="StepAccordion-icon" alt='icon'></img>
                         <span className="StepAccordion-title">{title}</span>
                         <span className="StepAccordion-meta">
-                            {selectedLabel}
+                            <span aria-live="polite">{selectedLabel}</span>
                             <ChevronDownIcon className="AccordionChevron" aria-hidden />
                         </span>
                     </span>
