@@ -30,7 +30,9 @@ export default function BundleAccordion({ selections, setQuantity, getSelectedCo
 
         const scrollActiveItemIntoView = (event: AnimationEvent) => {
             if (event.animationName !== 'accordion-slide-down') return
-            activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+            setTimeout(() => {
+                activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+            }, 100)
         }
 
         activeItem.addEventListener('animationend', scrollActiveItemIntoView)
