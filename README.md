@@ -23,6 +23,8 @@ npm run preview  # preview the production build locally
 - **Built on Radix UI** — the variant picker, plan selector, and step accordion use Radix primitives rather than hand-rolled widgets, which gets us correct keyboard navigation, focus management, and ARIA wiring for free instead of us reinventing it.
 - **Live regions** — the quantity stepper and the "N selected" step counter use `aria-live="polite"`, so screen readers announce changes as you adjust the bundle, not just on page load.
 - Controls are labeled with `aria-label` ("Increase quantity", "Color", ...), decorative icons are `aria-hidden`, and the error fallback uses `role="alert"`.
+- **Keyboard navigation** — Tab moves between whole components rather than stopping on every individual option; arrow keys then move within a variant/plan group and Enter/Space activates the focused option. That's Radix's roving-tabindex behavior, not something hand-rolled.
+- **Fluid typography** — font sizes are defined with `clamp()` in `tokens.css`, so text scales smoothly across screen sizes instead of jumping at fixed breakpoints.
 
 ## CI/CD
 
