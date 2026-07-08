@@ -99,4 +99,43 @@ describe('deriveReviewData', () => {
         expect(totalPrice).toBe(20 + 10 + 10)
         expect(totalOriginalPrice).toBe(40 + 20 + 15)
     })
+
+    it('omits selectedPlan and its price when no plan option has a positive quantity', () => {
+        const selections: BundleSelections = {
+            cameras: { 'cam-a': { Red: 1, Blue: 0 } },
+            plan: { basic: { default: 0 }, unlimited: { default: 0 } },
+        }
+
+        const { selectedPlan, planLabel, totalPrice, totalOriginalPrice } = deriveReviewData(steps, selections)
+
+        expect(selectedPlan).toBeUndefined()
+        expect(planLabel).toBe('PLAN')
+        expect(totalPrice).toBe(10)
+        expect(totalOriginalPrice).toBe(20)
+    })
+
+    it('ignores a selection entry for an item id that no longer exists in steps', () => {
+        const selections: BundleSelections = {
+            cameras: { 'cam-a': { Red: 1 }, 'discontinued-cam': { default: 5 } },
+            plan: { basic: { default: 0 }, unlimited: { default: 0 } },
+        }
+
+        const { sections } = deriveReviewData(steps, selections)
+        const cameraLines = sections.find((s) => s.id === 'cameras')!.lineItems
+
+        expect(cameraLines).toHaveLength(1)
+        expect(cameraLines[0].itemId).toBe('cam-a')
+    })
+
+    it('produces an empty lineItems array for a step where every quantity is zero', () => {
+        const selections: BundleSelections = {
+            cameras: { 'cam-a': { Red: 0, Blue: 0 } },
+            plan: { basic: { default: 0 }, unlimited: { default: 0 } },
+        }
+
+        const { sections } = deriveReviewData(steps, selections)
+        const cameraSection = sections.find((s) => s.id === 'cameras')!
+
+        expect(cameraSection.lineItems).toEqual([])
+    })
 })
