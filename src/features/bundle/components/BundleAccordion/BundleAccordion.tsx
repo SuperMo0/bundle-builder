@@ -29,7 +29,7 @@ export default function BundleAccordion({ selections, setQuantity, getSelectedCo
         if (!activeItem) return
 
         const scrollActiveItemIntoView = () => {
-            activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+            activeItem.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }
 
         activeItem.addEventListener('animationend', scrollActiveItemIntoView, { once: true })
