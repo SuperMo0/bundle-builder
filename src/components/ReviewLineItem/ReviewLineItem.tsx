@@ -10,6 +10,7 @@ interface ReviewLineItemProps {
     price: number
     originalPrice?: number
     min?: number
+    max?: number
     onQuantityChange: (quantity: number) => void
 }
 
@@ -20,13 +21,14 @@ export default function ReviewLineItem({
     price,
     originalPrice,
     min,
+    max,
     onQuantityChange,
 }: ReviewLineItemProps) {
     return (
         <div className="ReviewLineItem">
             <img src={publicAsset(image || "/icons/product-placeholder.svg")} alt={name} className="ReviewLineItem-image" />
             <p className="ReviewLineItem-name">{name}</p>
-            <Stepper quantity={quantity} onChange={onQuantityChange} min={min} />
+            <Stepper quantity={quantity} onChange={onQuantityChange} min={min} max={max} />
             <PriceDisplay price={price} originalPrice={originalPrice} variant="line" />
         </div>
     )

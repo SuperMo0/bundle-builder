@@ -6,7 +6,7 @@ import "./BundleBuilder.css"
 
 export default function BundleBuilder() {
     const steps = useBundleSteps()
-    const { selections, getSelectedCount, setQuantity, getMinQuantity, saveSnapshot } = useBundleSelection(steps)
+    const { selections, getSelectedCount, setQuantity, getMinQuantity, getMaxQuantity, saveSnapshot } = useBundleSelection(steps)
 
     return (
         <div className="BundleBuilder">
@@ -16,6 +16,7 @@ export default function BundleBuilder() {
                     getSelectedCount={getSelectedCount}
                     setQuantity={setQuantity}
                     getMinQuantity={getMinQuantity}
+                    getMaxQuantity={getMaxQuantity}
                 />
             </section>
 
@@ -25,6 +26,7 @@ export default function BundleBuilder() {
                         selections={selections}
                         setQuantity={setQuantity}
                         getMinQuantity={getMinQuantity}
+                        getMaxQuantity={getMaxQuantity}
                         saveSnapshot={saveSnapshot}
                     />
                 </div>

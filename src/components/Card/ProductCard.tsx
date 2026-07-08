@@ -13,9 +13,10 @@ interface ProductCardProps {
     quantities: Record<string, number>
     onQuantityChange: (itemId: string, variantKey: string, quantity: number) => void
     min: number
+    max: number
 }
 
-export default function ProductCard({ bundleItem, quantities, onQuantityChange, min }: ProductCardProps) {
+export default function ProductCard({ bundleItem, quantities, onQuantityChange, min, max }: ProductCardProps) {
     const { id, name, description, image, price, originalPrice, colors } = bundleItem
     const [selectedColor, setSelectedColor] = useState(colors?.[0]?.name)
 
@@ -55,6 +56,7 @@ export default function ProductCard({ bundleItem, quantities, onQuantityChange, 
                             quantity={quantity}
                             onChange={(qty) => onQuantityChange(id, variantKey, qty)}
                             min={min}
+                            max={max}
                         />
                         <PriceDisplay price={price} originalPrice={originalPrice} variant="card" />
                     </div>

@@ -23,6 +23,7 @@ const hub: QuantityItem = {
     image: null,
     price: 0,
     required: true,
+    maxQuantity: 1,
 }
 
 const meta = {
@@ -48,17 +49,17 @@ function InteractiveCard(args: React.ComponentProps<typeof ProductCard>) {
 }
 
 export const WithColorVariants: Story = {
-    args: { bundleItem: camera, quantities: { Black: 1 }, onQuantityChange: () => {}, min: 0 },
+    args: { bundleItem: camera, quantities: { Black: 1 }, onQuantityChange: () => {}, min: 0, max: 99 },
     render: (args) => <InteractiveCard {...args} />,
 }
 
 export const Unselected: Story = {
-    args: { bundleItem: camera, quantities: { Black: 0 }, onQuantityChange: () => {}, min: 0 },
+    args: { bundleItem: camera, quantities: { Black: 0 }, onQuantityChange: () => {}, min: 0, max: 99 },
     render: (args) => <InteractiveCard {...args} />,
 }
 
 export const RequiredItem: Story = {
-    args: { bundleItem: hub, quantities: { default: 1 }, onQuantityChange: () => {}, min: 1 },
+    args: { bundleItem: hub, quantities: { default: 1 }, onQuantityChange: () => {}, min: 1, max: 1 },
     render: (args) => <InteractiveCard {...args} />,
-    parameters: { docs: { description: { story: 'Required items floor at quantity 1 — the stepper cannot decrement below it.' } } },
+    parameters: { docs: { description: { story: 'Required, single-unit items floor and ceiling at quantity 1 — the stepper cannot go below or above it.' } } },
 }

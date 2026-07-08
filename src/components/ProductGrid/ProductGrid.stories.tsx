@@ -23,6 +23,7 @@ const items: QuantityItem[] = [
         image: null,
         price: 0,
         required: true,
+        maxQuantity: 1,
     },
 ]
 
@@ -49,11 +50,12 @@ function InteractiveGrid() {
                 setQuantities((prev) => ({ ...prev, [itemId]: { ...prev[itemId], [variantKey]: quantity } }))
             }
             getMinQuantity={(itemId) => (itemId === 'hub' ? 1 : 0)}
+            getMaxQuantity={(itemId) => (itemId === 'hub' ? 1 : 99)}
         />
     )
 }
 
 export const Default: Story = {
-    args: { items, quantities: {}, onQuantityChange: () => {}, getMinQuantity: () => 0 },
+    args: { items, quantities: {}, onQuantityChange: () => {}, getMinQuantity: () => 0, getMaxQuantity: () => 99 },
     render: () => <InteractiveGrid />,
 }

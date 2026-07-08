@@ -19,6 +19,7 @@ export interface BundleItem {
 
 export interface QuantityItem extends BundleItem {
     required?: boolean
+    maxQuantity?: number
     colors?: ColorVariant[]
 }
 

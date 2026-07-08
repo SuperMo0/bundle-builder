@@ -7,9 +7,10 @@ interface ProductGridProps {
     quantities: Record<string, Record<string, number>>
     onQuantityChange: (itemId: string, variantKey: string, quantity: number) => void
     getMinQuantity: (itemId: string) => number
+    getMaxQuantity: (itemId: string) => number
 }
 
-export default function ProductGrid({ items, quantities, onQuantityChange, getMinQuantity }: ProductGridProps) {
+export default function ProductGrid({ items, quantities, onQuantityChange, getMinQuantity, getMaxQuantity }: ProductGridProps) {
     return (
         <div className="ProductGrid">
             {items.map((item) => (
@@ -19,6 +20,7 @@ export default function ProductGrid({ items, quantities, onQuantityChange, getMi
                     quantities={quantities[item.id] ?? {}}
                     onQuantityChange={onQuantityChange}
                     min={getMinQuantity(item.id)}
+                    max={getMaxQuantity(item.id)}
                 />
             ))}
         </div>

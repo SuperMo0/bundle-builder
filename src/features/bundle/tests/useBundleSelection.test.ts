@@ -38,6 +38,7 @@ const steps: BundleStep[] = [
                 image: null,
                 price: 0,
                 required: true,
+                maxQuantity: 1,
             },
         ],
     },
@@ -81,6 +82,26 @@ describe('useBundleSelection', () => {
         const { result } = renderHook(() => useBundleSelection(steps))
 
         expect(result.current.getMinQuantity('cameras', 'cam-a')).toBe(0)
+    })
+
+    it('ceilings a single-unit item at its maxQuantity and refuses to exceed it', () => {
+        const { result } = renderHook(() => useBundleSelection(steps))
+
+        expect(result.current.getMaxQuantity('sensors', 'hub')).toBe(1)
+
+        act(() => result.current.setQuantity('sensors', 'hub', 'default', 5))
+
+        expect(result.current.selections.sensors.hub.default).toBe(1)
+    })
+
+    it('does not cap an item with no maxQuantity set', () => {
+        const { result } = renderHook(() => useBundleSelection(steps))
+
+        expect(result.current.getMaxQuantity('cameras', 'cam-a')).toBe(Infinity)
+
+        act(() => result.current.setQuantity('cameras', 'cam-a', 'Red', 42))
+
+        expect(result.current.selections.cameras['cam-a'].Red).toBe(42)
     })
 
     it('tracks each color variant of a product independently', () => {

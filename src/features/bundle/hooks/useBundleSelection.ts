@@ -20,6 +20,12 @@ function minQuantityForItem(steps: BundleStep[], stepId: string, itemId: string)
     return isRequired ? 1 : 0
 }
 
+function maxQuantityForItem(steps: BundleStep[], stepId: string, itemId: string): number {
+    const item = steps.find((s) => s.id === stepId)?.items.find((i) => i.id === itemId)
+    const maxQuantity = item && 'maxQuantity' in item ? item.maxQuantity : undefined
+    return maxQuantity ?? Infinity
+}
+
 function createInitialSelections(steps: BundleStep[]): BundleSelections {
     return Object.fromEntries(
         steps.map((step) => [
@@ -43,7 +49,8 @@ export function useBundleSelection(steps: BundleStep[]) {
 
     const setQuantity = (stepId: string, itemId: string, variantKey: string, qty: number) => {
         const step = steps.find((s) => s.id === stepId)
-        const nextQty = Math.max(minQuantityForItem(steps, stepId, itemId), qty)
+        const clampedQty = Math.max(minQuantityForItem(steps, stepId, itemId), qty)
+        const nextQty = Math.min(maxQuantityForItem(steps, stepId, itemId), clampedQty)
 
         setSelections(
             produce((draft) => {
@@ -69,9 +76,11 @@ export function useBundleSelection(steps: BundleStep[]) {
 
     const getMinQuantity = (stepId: string, itemId: string) => minQuantityForItem(steps, stepId, itemId)
 
+    const getMaxQuantity = (stepId: string, itemId: string) => maxQuantityForItem(steps, stepId, itemId)
+
     const saveSnapshot = () => {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(selections))
     }
 
-    return { selections, setQuantity, getSelectedCount, getMinQuantity, saveSnapshot }
+    return { selections, setQuantity, getSelectedCount, getMinQuantity, getMaxQuantity, saveSnapshot }
 }

@@ -11,8 +11,9 @@ interface BundleAccordionProps {
     setQuantity: (stepId: string, itemId: string, variantKey: string, qty: number) => void;
     getSelectedCount: (stepId: string) => number;
     getMinQuantity: (stepId: string, itemId: string) => number;
+    getMaxQuantity: (stepId: string, itemId: string) => number;
 }
-export default function BundleAccordion({ selections, setQuantity, getSelectedCount, getMinQuantity }: BundleAccordionProps) {
+export default function BundleAccordion({ selections, setQuantity, getSelectedCount, getMinQuantity, getMaxQuantity }: BundleAccordionProps) {
     const bundleSteps = useBundleSteps()
     const [activeStep, setActiveStep] = useState(bundleSteps[0].id)
 
@@ -38,6 +39,7 @@ export default function BundleAccordion({ selections, setQuantity, getSelectedCo
                                 quantities={selections[step.id]}
                                 onQuantityChange={(itemId, variantKey, quantity) => { setQuantity(step.id, itemId, variantKey, quantity) }}
                                 getMinQuantity={(itemId) => getMinQuantity(step.id, itemId)}
+                                getMaxQuantity={(itemId) => getMaxQuantity(step.id, itemId)}
                             />
                         ) : (
                             <PlanGrid

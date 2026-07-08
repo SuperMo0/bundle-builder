@@ -12,7 +12,7 @@
   width: 1.75rem;
   height: 1.75rem;
   border-radius: var(--radius-sm);
-  background: var(--color-surface-muted);
+  background: var(--color-surface);
   color: var(--color-icon-stepper);
   font-size: var(--font-size-md);
   line-height: 1;

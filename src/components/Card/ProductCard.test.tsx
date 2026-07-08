@@ -14,7 +14,7 @@ const item: QuantityItem = {
 describe('ProductCard', () => {
     it('marks itself selected when any variant has a positive quantity', () => {
         render(
-            <ProductCard bundleItem={item} quantities={{ default: 2 }} onQuantityChange={vi.fn()} min={0} />
+            <ProductCard bundleItem={item} quantities={{ default: 2 }} onQuantityChange={vi.fn()} min={0} max={99} />
         )
 
         expect(screen.getByText('Camera A').closest('.ProductCard')).toHaveAttribute('data-selected', 'true')
@@ -22,7 +22,7 @@ describe('ProductCard', () => {
 
     it('is not marked selected when every variant quantity is zero', () => {
         render(
-            <ProductCard bundleItem={item} quantities={{ default: 0 }} onQuantityChange={vi.fn()} min={0} />
+            <ProductCard bundleItem={item} quantities={{ default: 0 }} onQuantityChange={vi.fn()} min={0} max={99} />
         )
 
         expect(screen.getByText('Camera A').closest('.ProductCard')).not.toHaveAttribute('data-selected')

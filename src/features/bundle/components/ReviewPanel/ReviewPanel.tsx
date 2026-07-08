@@ -10,10 +10,11 @@ interface ReviewPanelProps {
     selections: BundleSelections
     setQuantity: (stepId: string, itemId: string, variantKey: string, qty: number) => void
     getMinQuantity: (stepId: string, itemId: string) => number
+    getMaxQuantity: (stepId: string, itemId: string) => number
     saveSnapshot: () => void
 }
 
-export default function ReviewPanel({ selections, setQuantity, getMinQuantity, saveSnapshot }: ReviewPanelProps) {
+export default function ReviewPanel({ selections, setQuantity, getMinQuantity, getMaxQuantity, saveSnapshot }: ReviewPanelProps) {
     const bundleSteps = useBundleSteps()
     const { sections, selectedPlan, planLabel, totalPrice, totalOriginalPrice } = deriveReviewData(bundleSteps, selections)
 
@@ -42,6 +43,7 @@ export default function ReviewPanel({ selections, setQuantity, getMinQuantity, s
                                         price={lineItem.price}
                                         originalPrice={lineItem.originalPrice}
                                         min={getMinQuantity(section.id, lineItem.itemId)}
+                                        max={getMaxQuantity(section.id, lineItem.itemId)}
                                         onQuantityChange={(qty) =>
                                             setQuantity(section.id, lineItem.itemId, lineItem.variantKey, qty)
                                         }
