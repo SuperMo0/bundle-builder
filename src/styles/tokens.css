@@ -1,6 +1,7 @@
 /* =========================================
    FONTS
    ========================================= */
+   /*todo: use woff2 for better performance */
 @font-face {
   font-family: 'Gilroy';
   src: url('/fonts/Gilroy-Medium.woff') format('woff');
@@ -39,7 +40,7 @@
 :root {
   color-scheme: light;
 
-  /* --- 1. BASE COLOR TOKENS (Raw RGB for Alpha Injection) --- */
+  /* --- 1. BASE COLOR TOKENS */
   
   /* Brand */
   --base-purple: 78 47 210;
@@ -55,10 +56,9 @@
   --base-gray-c-600: 111 120 130;
   --base-gray-c-500: 168 178 189;
 
-  /* Structural Bases (Converted from Hex to RGB) */
-  --base-surface-elevated: 237 244 255; /* #EDF4FF */
-  --base-surface-muted: 242 242 245;    /* #F2F2F5 */
-  --base-border-default: 204 204 204;   /* #CCCCCC */
+  --base-surface-elevated: 237 244 255; 
+  --base-surface-muted: 242 242 245;    
+  --base-border-default: 204 204 204;   
 
 
   /* --- 2. SEMANTIC COLOR TOKENS --- */
@@ -146,7 +146,7 @@
 
 
   /* --- 6. LAYOUT --- */
-  
+
   --container-max-width: 1440px;
   --container-padding-inline: clamp(0.5rem, 0.78rem + 1.7857vw, 1.8rem);
 }
