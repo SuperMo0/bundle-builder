@@ -1,9 +1,10 @@
 import { Accordion } from 'radix-ui'
-import type { ReactNode } from 'react'
+import type { ReactNode, Ref } from 'react'
 import { publicAsset } from '../../lib/publicAsset'
 import './StepAccordion.css'
 
 interface StepAccordionItemProps {
+    ref?: Ref<HTMLDivElement>
     value: string
     stepNumber: number
     totalSteps: number
@@ -16,6 +17,7 @@ interface StepAccordionItemProps {
 }
 
 export function StepAccordionItem({
+    ref,
     value,
     stepNumber,
     totalSteps,
@@ -27,7 +29,7 @@ export function StepAccordionItem({
     children,
 }: StepAccordionItemProps) {
     return (
-        <Accordion.Item className="AccordionItem" value={value}>
+        <Accordion.Item ref={ref} className="AccordionItem" value={value}>
             <span className="StepAccordion-eyebrow">
                 STEP {stepNumber} OF {totalSteps}
             </span>
