@@ -18,8 +18,12 @@ export default function BundleAccordion({ selections, setQuantity, getSelectedCo
     const [activeStep, setActiveStep] = useState(bundleSteps[0].id)
     const itemRefs = useRef(new Map<string, HTMLDivElement>())
     const isFirstRender = useRef(true)
+    const prevActiveStepRef = useRef(activeStep)
 
     useEffect(() => {
+        const prevStep = prevActiveStepRef.current
+        prevActiveStepRef.current = activeStep
+
         if (isFirstRender.current) {
             isFirstRender.current = false
             return
@@ -27,14 +31,31 @@ export default function BundleAccordion({ selections, setQuantity, getSelectedCo
 
         const activeItem = itemRefs.current.get(activeStep)
         if (!activeItem) return
+        const closingItem = prevStep !== activeStep ? itemRefs.current.get(prevStep) : undefined
 
-        const scrollActiveItemIntoView = (event: AnimationEvent) => {
+        let openDone = false
+        let closeDone = !closingItem
+
+        const scrollIfBothDone = () => {
+            if (openDone && closeDone) activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+        }
+        const onOpenEnd = (event: AnimationEvent) => {
             if (event.animationName !== 'accordion-slide-down') return
-            activeItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+            openDone = true
+            scrollIfBothDone()
+        }
+        const onCloseEnd = (event: AnimationEvent) => {
+            if (event.animationName !== 'accordion-slide-up') return
+            closeDone = true
+            scrollIfBothDone()
         }
 
-        activeItem.addEventListener('animationend', scrollActiveItemIntoView)
-        return () => activeItem.removeEventListener('animationend', scrollActiveItemIntoView)
+        activeItem.addEventListener('animationend', onOpenEnd)
+        closingItem?.addEventListener('animationend', onCloseEnd)
+        return () => {
+            activeItem.removeEventListener('animationend', onOpenEnd)
+            closingItem?.removeEventListener('animationend', onCloseEnd)
+        }
     }, [activeStep])
 
     return (
