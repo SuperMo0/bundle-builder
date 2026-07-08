@@ -1,4 +1,6 @@
+import { ErrorBoundary } from "react-error-boundary";
 import BundleBuilder from "../features/bundle/components/BundleBuilder/BundleBuilder";
+import ErrorFallback from "../components/ErrorFallback/ErrorFallback";
 import './BundleBuilderPage.css'
 
 export default function BundleBuilderPage() {
@@ -7,7 +9,9 @@ export default function BundleBuilderPage() {
             <header className="PageHeader">
                 <h1 className="PageHeader-title">Let's get started!</h1>
             </header>
-            <BundleBuilder />
+            <ErrorBoundary FallbackComponent={ErrorFallback}>
+                <BundleBuilder />
+            </ErrorBoundary>
         </>
     )
 }

@@ -125,4 +125,13 @@ describe('useBundleSelection', () => {
         const second = renderHook(() => useBundleSelection(steps))
         expect(second.result.current.selections.cameras['cam-a'].Red).toBe(3)
     })
+
+    it('falls back to seeded defaults when the persisted snapshot is corrupted JSON', () => {
+        localStorage.setItem('bundle-builder:selections', '{not valid json')
+
+        const { result } = renderHook(() => useBundleSelection(steps))
+
+        expect(result.current.selections.cameras['cam-a'].Red).toBe(0)
+        expect(result.current.selections.sensors.hub.default).toBe(1)
+    })
 })
