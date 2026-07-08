@@ -12,6 +12,16 @@
 }
 
 .ReviewSummary-shipping-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5625rem;
+  height: 2.5625rem;
+  background: var(--color-surface);
+  align-self: center;
+}
+
+.ReviewSummary-shipping-icon img {
   width: 1.75rem;
   height: 1.75rem;
 }

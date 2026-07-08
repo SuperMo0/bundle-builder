@@ -28,7 +28,9 @@ export default function ReviewSummary({ totalPrice, totalOriginalPrice, onSave }
     return (
         <div className="ReviewSummary">
             <div className="ReviewSummary-shipping">
-                <img src={publicAsset("/icons/shipping.svg")} alt="" className="ReviewSummary-shipping-icon" />
+                <div className="ReviewSummary-shipping-icon">
+                    <img src={publicAsset("/icons/shipping.svg")} alt="" />
+                </div>
                 <p className="ReviewSummary-shipping-label">Fast Shipping</p>
                 <PriceDisplay price={0} originalPrice={5.99} variant="line" />
             </div>
