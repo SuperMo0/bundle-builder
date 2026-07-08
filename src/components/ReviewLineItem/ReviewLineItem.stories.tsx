@@ -19,7 +19,7 @@ function InteractiveRow(args: React.ComponentProps<typeof ReviewLineItem>) {
 export const Default: Story = {
     args: {
         name: 'Cam v4 — Black',
-        image: '/products/cam-black.png',
+        image: '/products/wyze-cam-v4-black.png',
         quantity: 2,
         price: 35.99,
         originalPrice: 45.99,

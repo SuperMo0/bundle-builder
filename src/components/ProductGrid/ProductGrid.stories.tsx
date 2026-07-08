@@ -8,12 +8,12 @@ const items: QuantityItem[] = [
         id: 'cam-a',
         name: 'Cam v4',
         description: 'Color night vision and on-camera AI.',
-        image: '/products/cam-a.png',
+        image: '/products/wyze-cam-v4.png',
         price: 35.99,
         originalPrice: 45.99,
         colors: [
-            { name: 'Black', image: '/products/cam-black.png' },
-            { name: 'White', image: '/products/cam-white.png' },
+            { name: 'Black', image: '/products/wyze-cam-v4-black.png' },
+            { name: 'White', image: '/products/wyze-cam-v4-white.png' },
         ],
     },
     {

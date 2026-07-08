@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 import VariantPicker from './VariantPicker'
 
 const colors = [
-    { name: 'Black', image: '/products/cam-black.png' },
-    { name: 'White', image: '/products/cam-white.png' },
+    { name: 'Black', image: '/products/wyze-cam-v4-black.png' },
+    { name: 'White', image: '/products/wyze-cam-v4-white.png' },
 ]
 
 const meta = {
